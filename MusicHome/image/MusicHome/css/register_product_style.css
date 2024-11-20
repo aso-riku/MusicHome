@@ -1,0 +1,30 @@
+.register-product {
+    margin-top: 50px;
+    font-size: 20px;
+}
+
+.outline {
+    width: 80%;
+    margin: auto;
+    border: solid 1px;
+    border-radius: 10px;
+    padding: 20px 5%;
+}
+
+.title {
+    text-align: center;
+    font-size: 2em;
+
+}
+
+.headline {
+    text-align: right;
+    
+}
+
+.text-box {
+    border: none;
+    outline: none;
+    border-bottom: 0.5px solid;
+    width: 100%;
+}

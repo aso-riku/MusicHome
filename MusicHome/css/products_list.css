@@ -2,11 +2,11 @@
     margin: 2% 7%;
 }
 
-.col {
+.col-2 {
     text-align: center;
     align-items: center;
 }
 
 .img {
-    width: 70%
+    width: 100%
 }

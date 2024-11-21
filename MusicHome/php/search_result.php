@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -11,19 +15,30 @@
 <body>
 
     <article class="search_result">
-        <form action="details.php" method="post">
+        <form action="details.php" method="get">
             <?php
-            for ($i = 0; $i < 10; $i++) {
-                echo '<div class="row gap-2">';
-                    for ($j = 0; $j < 6; $j++) {
-                        echo '<button type="submit" class="card col">
-                                <img  class="img" src="../image/guitar_sample.jpg" width="180">
-                                <p>MICK THOMSON SOLOIST SL2 ARCTIC WHITE</p>
-                                <p>¥ 250,000</p>
-                              </button>';
-                    }
-                echo '</div>';
+            require_once 'common.php';
+
+            // データベース接続
+            $pdo = connect_db();
+
+            // 入力されたkeyword
+            $keyword = sanitize($_GET['keyword']) ?? '';
+
+            // keywordをもとにデータベースから検索
+            $stmt = $pdo->prepare('SELECT * FROM products A JOIN product_images B ON A.product_id = B.product_id AND image_id = 1 WHERE A.product_id = ? OR product_name LIKE ? OR product_detail LIKE ? OR brand_name = ?');
+            $result = $stmt->execute([$keyword, '%'.$keyword.'%', '%'.$keyword.'%', $keyword]);
+            $count = $stmt->rowCount();
+
+            // 該当商品が存在しない場合
+            if (!$result || $count == 0) {
+                echo '<p class="not-exist">該当商品がありません</p>';
+            // 該当商品が存在する場合
+            } else {
+                // 商品を表示
+                view_product_list($stmt);
             }
+            
             ?>
         </form>
     </article>

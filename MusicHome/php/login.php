@@ -45,7 +45,7 @@ require_once 'common.php';
 
             <section class="col-5 ">
                 <p>まだMusic Home会員に登録されていない方</p>
-                <button onclick="location.href='registration.php'" class="btn btn-outline-dark">会員に新規登録</button>
+                <button onclick="location.href='register_user.php'" class="btn btn-outline-dark">会員に新規登録</button>
             </section>
 
             <section>

@@ -18,7 +18,7 @@
             <div class="header">
                 <a href="./index.php" class="logo">MusicHome</a>
     
-                <form method="get" action="#" class="search_container">
+                <form method="get" action="search_result.php" class="search_container">
                     <input type="text" size="25" placeholder="　キーワード検索">
                     <input type="submit" value="&#xf002">
                 </form>

@@ -3,21 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MusicHome</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/Home.css">
     <link rel="stylesheet" href="../css/details_style.css">
 </head>
 <body>
+    <?php
+    require_once 'common.php';
+
+    // ヘッダーを表示
+    view_header();
+    ?>
+
     <article class="details">
         <section class="row gap-3 product-area">
             <div class="col image-area">
                 <div class="row">
                     <div class="col-2 sub-img-area">
-                        <?php
+
                         <img class="sub-img" src="https://m.media-amazon.com/images/I/71aAmkQnQHL._AC_SX569_.jpg">
                         <img class="sub-img" src="https://m.media-amazon.com/images/I/61oVK9reYwL._AC_SX569_.jpg">
                         <img class="sub-img" src="https://m.media-amazon.com/images/I/418BFOFLzcL._AC_US40_.jpg">
-                        ?>
+
                     </div>
                     <div class="col-10 main-img-area">
                         <img class="main-img" src="https://m.media-amazon.com/images/I/61XOFGAateL._AC_SX569_.jpg">

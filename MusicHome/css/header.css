@@ -1,193 +1,189 @@
 header {
-    background-color: white;
-  }
-  
-  .fixed{
-    width: 100%;
-    position: fixed;
-    top: 1;
-    z-index: 1;
-    inset: 0;
-    margin: auto;    
-  }
-
-  .yohaku{
-    margin-top: 150px;
-  }
-
-  .header{
-    max-width: 100%;
-    height: 70px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 40px;
-    padding-right: 40px;
-    display: flex;
-    justify-content: space-between; /* ヘッダーのためのコード */
-    align-items: center;
-    font-family: serif;
-    
-  }
-  
-  .header-inner {
-    max-width: 100%;
-    height: 70px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 40px;
-    padding-right: 40px;
-    display: flex;
-    justify-content: center; /* ナビゲーションを中央に配置するためのコード */
-    align-items: center;
-    font-family: serif;
-    
-  }
-
-  .header-site-menu {
-    display: flex;
-  }
-  
-  .logo {
-    color: black;
-    font-size: 2em;
-  }
-  
-  .site-menu, a {
-    margin: 5px;
-  }
-  
-  .form-control {
-    width: auto;
-  }
-
-  .guitar{
-    margin-top: 200px;
-    width: 200px;
-    border: 2px;
-  }
-
-  .guitar img {
-    width: 50%;
-    height: auto;
-    text-align: left;
-    display: block;
-    margin: 0 auto;
-  }
-  
-  h2{
-    margin-left: 100px;
-    margin-top: 30px;
-  }
-
-  .rank{
-    margin-left: 100px;
-  }
-
-  p.rank{
-    font-size: 20px;
-  }
-
-  *{
-    margin:0;
-    padding:0;
+  background-color: white;
 }
+
+.fixed{
+  width: 100%;
+  position: fixed;
+  top: 1;
+  z-index: 1;
+  inset: 0;
+  margin: auto;    
+}
+
+.yohaku{
+  margin-top: 150px;
+}
+
+.header{
+  max-width: 100%;
+  height: 70px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: flex;
+  justify-content: space-between; /* ヘッダーのためのコード */
+  align-items: center;
+  font-family: serif;
+  
+}
+
+.header-inner {
+  max-width: 100%;
+  height: 70px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: flex;
+  justify-content: center; /* ナビゲーションを中央に配置するためのコード */
+  align-items: center;
+  font-family: serif;
+  
+}
+
+.header-site-menu {
+  display: flex;
+}
+
+.logo {
+  color: black;
+  font-size: 2em;
+}
+
+.site-menu, a {
+  margin: 5px;
+}
+
+.form-control {
+  width: auto;
+}
+
+.guitar{
+  margin-top: 200px;
+  width: 200px;
+  border: 2px;
+}
+
+.guitar img {
+  width: 50%;
+  height: auto;
+  text-align: left;
+  display: block;
+  margin: 0 auto;
+}
+
+h2{
+  margin-left: 100px;
+  margin-top: 30px;
+}
+
+.rank{
+  margin-left: 100px;
+}
+
+p.rank{
+  font-size: 20px;
+}
+
 a{
-    color: #fff;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 
 /* ナビゲーションバーの中央寄せ */
 nav {
-  text-align: center;
-  margin-top: 20px;
+text-align: center;
+margin-top: 20px;
 }
 
 /* ナビゲーションメニューの設定 */
 ul {
-  list-style: none;
-  padding: 0;
-  /* display: inline-flex; */
-  justify-content: center;
+list-style: none;
+padding: 0;
+/* display: inline-flex; */
+justify-content: center;
 }
 
 /* メニュー項目のスタイル */
 nav ul li {
-  float: none; /* フロートを無効に */
-  font-size: 15px auto;
-  /* border-radius: 5px; */
-  /* margin: 10px; */
-  padding-left: 10px;
-  padding-right: 10px;
+float: none; /* フロートを無効に */
+font-size: 15px auto;
+/* border-radius: 5px; */
+/* margin: 10px; */
+padding-left: 10px;
+padding-right: 10px;
 }
 
 li{
-    list-style: none;
+  list-style: none;
 }
 .gnav_wrap{
-    max-width:100%;
-    /* margin:0 auto; */
-    display: flex; 
-    justify-content: center;
-    background-color: white;
+  max-width:100%;
+  /* margin:0 auto; */
+  display: flex; 
+  justify-content: center;
+  background-color: white;
 }
 .main_menu {
-    width: 150px;
-    text-align: center;
-    color: black;
-    padding: 20px 0;
-    cursor: pointer;
-    position: relative;
+  width: 150px;
+  text-align: center;
+  color: black;
+  padding: 20px 0;
+  cursor: pointer;
+  position: relative;
 }
 .sub_menu {
-  position: absolute;
-  width: 100%;
-  top: 100%;
-  left: -0px;
-  /* display: flex; */
-  gap: 10px;
-  /* padding: 10px; */
-  transition: all 0.3s ease;
-  z-index: 1;
-  opacity: 0; /* 初期は透明に */
-  visibility: hidden; /* 初期は非表示 */
+position: absolute;
+width: 100%;
+top: 100%;
+left: -0px;
+/* display: flex; */
+gap: 10px;
+/* padding: 10px; */
+transition: all 0.3s ease;
+z-index: 1;
+opacity: 0; /* 初期は透明に */
+visibility: hidden; /* 初期は非表示 */
 }
 
 .main_menu:hover .sub_menu {
-  opacity: 1; /* ホバー時に表示 */
-  visibility: visible;
+opacity: 1; /* ホバー時に表示 */
+visibility: visible;
 }
 
 .main_menu:hover .main_menu {
-  background-color: black;
-  color: white;
+background-color: black;
+color: white;
 }
 
 .sub_menu:hover .li{
-  opacity: 0.3;
+opacity: 0.3;
 }
 
 .open {
-  transform: translateY(20px);
-  opacity: 1;
-  visibility: visible;
+transform: translateY(20px);
+opacity: 1;
+visibility: visible;
 }
 .sub_menu>li{
-    background-color: white;
-    border: 1px solid ;
-    padding: 10px 20px; 
-     /* border-radius: 5px;  */
-    text-align: center;
-    min-width: 80px;
-    width: 100%;
+  background-color: white;
+  border: 1px solid ;
+  padding: 10px 20px; 
+   /* border-radius: 5px;  */
+  text-align: center;
+  min-width: 80px;
+  width: 100%;
 }
 .sub_menu>li:hover{
-    background: #f0f0f0;
+  background: #f0f0f0;
 }
 
 p.sen{
-  width: 80px;
+width: 80px;
 }
 
 nav.link{
-  justify-content: center;
+justify-content: center;
 }

@@ -12,97 +12,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-    <!-- ヘッダー -->
-    <div class="fixed">
-        <header>
-            <div class="header">
-                <a href="./index.php" class="logo">MusicHome</a>
-    
-                <form method="get" action="search_result.php" class="search_container">
-                    <input type="text" size="25" placeholder="　キーワード検索">
-                    <input type="submit" value="&#xf002">
-                </form>
-    
-                    <div class="header-site-menu">
-                        <nav class="site-menu">
-                            <a href="favorite.php">
-                                <img src="../img/herat.jpeg" height="35">
-                            </a>
-                            <a href="kart.php">
-                                <img src="../img/kart.png" height="55">
-                            </a>
-                            <a href="icon.php">
-                                <img src="../img/icon.png" height="45">
-                            </a>
-                        </nav>
-                    </div>
-    
-            </div>
-            <!-- ナビゲーション -->
-            <div class="header-inner">
-                <nav class="link">
-                    <ul class="gnav_wrap">
-                        <li class="main_menu">
-                            <span class="sen">ギター</span>
-                            <ul class="sub_menu">
-                                <li><a href="#">エレキギター</a></li>
-                                <li><a href="#">アコースティックギター</a></li>
-                                <li><a href="#">クラシックギター</a></li>
-                                <li><a href="#">その他</a></li>
-                            </ul>
-                        </li>
-                        <li class="main_menu">
-                            <span class="sen">ベース</span>
-                            <ul class="sub_menu">
-                                <li><a href="#">JBタイプ</a></li>
-                                <li><a href="#">PBタイプ</a></li>
-                                <li><a href="#">PJタイプ</a></li>
-                                <li><a href="#">多弦ベース</a></li>
-                            </ul>
-                        </li>
-                        <li class="main_menu">
-                            <span class="sen">ドラム</span>
-                            <ul class="sub_menu">
-                                <li><a href="#">ドラム</a></li>
-                                <li><a href="#">スネア</a></li>
-                                <li><a href="#">電子ドラム</a></li>
-                                <li><a href="#">シンバル</a></li>
-                            </ul>
-                        </li>
-                        <li class="main_menu">
-                            <span class="sen">ピアノ</span>
-                            <ul class="sub_menu">
-                                <li><a href="#">コンセプト1</a></li>
-                                <li><a href="#">コンセプト2</a></li>
-                                <li><a href="#">コンセプト3</a></li>
-                                <li><a href="#">コンセプト4</a></li>
-                            </ul>
-                        </li>
-                        <li class="main_menu">
-                            <span class="sen">和楽器</span>
-                            <ul class="sub_menu">
-                                <li><a href="#">コンセプト1</a></li>
-                                <li><a href="#">コンセプト2</a></li>
-                                <li><a href="#">コンセプト3</a></li>
-                                <li><a href="#">コンセプト4</a></li>
-                            </ul>
-                        </li>
-                        <li class="main_menu">
-                            <span class="sen">周辺機器</span>
-                            <ul class="sub_menu">
-                                <li><a href="#">コンセプト1</a></li>
-                                <li><a href="#">コンセプト2</a></li>
-                                <li><a href="#">コンセプト3</a></li>
-                                <li><a href="#">コンセプト4</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-    </div>
-=======
     <?php
     require_once 'common.php';
 
@@ -110,7 +19,6 @@
     view_header();
     ?>
 
->>>>>>> 0c38d6e914b25c5c437098d26a64cb69c676fb5f
     <!-- スライド -->
     <div class="yohaku">
         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">

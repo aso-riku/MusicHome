@@ -57,8 +57,12 @@
     color: orange;
 }
 
-.inventory {
+.in-stock {
     color: rgb(27, 171, 27);
+}
+
+.out-stock {
+    color: rgb(250, 48, 48);
 }
 
 .detail-title {
@@ -83,11 +87,14 @@
 }
 
 .cart {
-    background-color: rgb(68, 252, 80);
+    margin-top: 20px;
+    background-color: rgb(73, 73, 73);
+    color: white;
 }
 
 .buy {
-    background-color: rgb(199, 199, 199);
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(32, 32, 32);
 }
 
 .review-title {
@@ -128,4 +135,21 @@
     color: rgb(97, 97, 97);
 }
 
+.post {
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(32, 32, 32);
+}
+
+.favorite {
+    font-size: 1.2rem;
+    color: rgb(255, 48, 48);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.favorite:hover {
+    text-decoration: none;
+    color: inherit;
+    transform: scale(1.5);
+}
 

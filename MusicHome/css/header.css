@@ -49,10 +49,24 @@ header {
 .logo {
   color: black;
   font-size: 2em;
+  text-decoration: none;
 }
 
-.site-menu, a {
+.logo:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-menu {
+  position: relative;
+}
+
+.site-menu a {
   margin: 5px;
+}
+
+.site-menu a:hover {
+  text-decoration: none;
 }
 
 .form-control {
@@ -185,4 +199,25 @@ width: 80px;
 
 nav.link{
 justify-content: center;
+}
+
+.menu-item {
+  position: relative;
+}
+
+.overlay-menu {
+  display: none; /* 初期状態で非表示 */
+  position: absolute;
+  top: 50px; /* アイコンの下に配置 */
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* 半透明の背景 */
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item:hover .overlay-menu {
+  display: block;
 }

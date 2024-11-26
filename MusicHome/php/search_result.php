@@ -24,7 +24,7 @@ session_start();
 
 
     <article class="search_result">
-        <form action="details.php" method="get">
+        <form action="details_user.php" method="get">
             <?php
             require_once 'common.php';
 
@@ -33,6 +33,8 @@ session_start();
 
             // 入力されたkeyword
             $keyword = sanitize($_GET['keyword']) ?? '';
+
+            echo '<h4>', $keyword, ' の検索結果</h4>';
 
             // keywordをもとにデータベースから検索
             $stmt = $pdo->prepare('SELECT * FROM products A JOIN product_images B ON A.product_id = B.product_id AND image_id = 1 WHERE A.product_id = ? OR product_name LIKE ? OR product_detail LIKE ? OR brand_name = ?');

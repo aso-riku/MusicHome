@@ -27,17 +27,19 @@ function view_header() {
                         <input type="submit" value="検索">
                     </form>
         
-                     <div class="header-site-menu">
+                    <div class="header-site-menu">
                         <nav class="site-menu">
                             <a href="favorite.php">
                                 <img src="../image/herat.jpeg" height="35">
                             </a>
-                            <a href="kart.php">
+                            <a href="cart.php">
                                 <img src="../image/kart.png" height="55">
                             </a>
-                            <a href="icon.php">
-                                <img src="../image/icon.png" height="45">
-                            </a>
+
+                                <a href="icon.php">
+                                    <img src="../image/icon.png" height="45">
+                                </a>
+
                         </nav>
                     </div>
                 </div>
@@ -114,13 +116,33 @@ function view_product_list($stmt) {
     // 商品画像取得
     echo '<div class="row">';
     while ($row = $stmt->fetch()) {
-            echo '<button type="submit" class="card col-2">
-                    <input type="hidden" name="product_id" value="'. $row['product_id']. '">
+            echo '<button type="submit" name="product_id" value="'. $row['product_id']. '" class="card col-2">
                     <img  class="img" src="'. $row['image_url']. '" width="180">
-                    <p>'. $row['product_name']. '</p>
-                    <p>'. $row['price']. '</p>
+                    <div class="detail-area">
+                        <span>
+                            <p class="brand">', $row['brand_name'], '</p>
+                            <p class="evaluation">', avg_evaluation($row['product_id']), '</p>
+                        </span>
+                        <p class="name">'. $row['product_name']. '</p>
+                        <p class="price">¥ '. number_format($row['price']). '</p>
+                    </div>
                 </button>';
     }
     echo '</div>';
+}
+
+// 評価計算
+function avg_evaluation($product_id) {
+    // データベース接続
+    $pdo = connect_db();
+
+    $stmt = $pdo->prepare('SELECT AVG(evaluation) AS avg_evaluation FROM review WHERE product_id = ? GROUP BY product_id');
+    $stmt->execute([$product_id]);
+    $avg_evaluation = round($stmt->fetchColumn());
+    
+    $evaluation = str_repeat('★', $avg_evaluation);
+    $evaluation .= str_repeat('☆', 5 - $avg_evaluation);
+
+    return $evaluation;
 }
 ?>

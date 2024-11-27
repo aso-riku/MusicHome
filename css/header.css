@@ -5,9 +5,8 @@ header {
 .fixed{
   width: 100%;
   position: fixed;
-  top: 1;
-  z-index: 1;
-  inset: 0;
+  top: 0;
+  z-index: 1000;
   margin: auto;    
 }
 
@@ -50,10 +49,24 @@ header {
 .logo {
   color: black;
   font-size: 2em;
+  text-decoration: none;
 }
 
-.site-menu, a {
+.logo:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-menu {
+  position: relative;
+}
+
+.site-menu a {
   margin: 5px;
+}
+
+.site-menu a:hover {
+  text-decoration: none;
 }
 
 .form-control {
@@ -74,7 +87,7 @@ header {
   margin: 0 auto;
 }
 
-h2{
+.fixed h2{
   margin-left: 100px;
   margin-top: 30px;
 }
@@ -87,8 +100,7 @@ p.rank{
   font-size: 20px;
 }
 
-a{
-  color: #fff;
+.fixed a{
   text-decoration: none;
 }
 
@@ -176,6 +188,7 @@ visibility: visible;
   min-width: 80px;
   width: 100%;
 }
+
 .sub_menu>li:hover{
   background: #f0f0f0;
 }
@@ -186,4 +199,25 @@ width: 80px;
 
 nav.link{
 justify-content: center;
+}
+
+.menu-item {
+  position: relative;
+}
+
+.overlay-menu {
+  display: none; /* 初期状態で非表示 */
+  position: absolute;
+  top: 50px; /* アイコンの下に配置 */
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* 半透明の背景 */
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item:hover .overlay-menu {
+  display: block;
 }

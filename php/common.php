@@ -1,3 +1,4 @@
+
 <?php
 // サニタイジング
 function sanitize($str) {
@@ -123,4 +124,20 @@ function view_product_list($stmt) {
     }
     echo '</div>';
 }
+
+// 評価計算
+function avg_evaluation($product_id) {
+    // データベース接続
+    $pdo = connect_db();
+
+    $stmt = $pdo->prepare('SELECT AVG(evaluation) AS avg_evaluation FROM review WHERE product_id = ? GROUP BY product_id');
+    $stmt->execute([$product_id]);
+    $avg_evaluation = round($stmt->fetchColumn());
+    
+    $evaluation = str_repeat('★', $avg_evaluation);
+    $evaluation .= str_repeat('☆', 5 - $avg_evaluation);
+
+    return $evaluation;
+}
+
 ?>

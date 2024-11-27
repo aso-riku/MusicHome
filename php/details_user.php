@@ -1,4 +1,3 @@
-<<<<<<< HEAD:php/details_user.php
 <!DOCTYPE html>
 <html lang="ja">
 <head>

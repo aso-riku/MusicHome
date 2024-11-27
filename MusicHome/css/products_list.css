@@ -1,0 +1,51 @@
+.search_result, .favorite {
+    margin-top: 150px;
+    padding: 2% 7%;
+}
+
+h4 {
+    margin-bottom: 20px;
+}
+
+.col-2 {
+    padding: 1%;
+    text-align: left;
+    align-items: center;
+}
+
+.card {
+    background-color: rgb(250, 248, 246);
+    margin-bottom: 10px;
+}
+
+.img {
+    width: 100%;
+    background-color: rgb(229, 229, 229);
+}
+
+.detail-area {
+    margin-top: 10px;
+}
+
+span {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0px;
+}
+
+.evaluation {
+    color: orange;
+}
+
+.name {
+    margin-top: 0px;
+    font-size: 1.1rem;
+    margin-bottom: 7px;
+}
+
+.price {
+    font-size: 1.3rem;
+    color: rgb(251, 43, 43);
+    margin-top: 10px;
+    margin-bottom: 5px;
+}

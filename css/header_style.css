@@ -1,0 +1,37 @@
+header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background-image: url(../image/wood.webp);
+    background-repeat: repeat;
+  }
+  
+  .header-inner {
+    max-width: 2000px;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-site-menu {
+    display: f;
+  }
+  
+  .logo {
+    color: white;
+    font-size: 1.3em;
+  }
+  
+  .site-menu a {
+    margin: 5px;
+  }
+  
+  .search {
+    width: 600px;
+  }

@@ -35,11 +35,9 @@ function view_header() {
                             <a href="cart.php">
                                 <img src="../image/kart.png" height="55">
                             </a>
-
-                                <a href="icon.php">
-                                    <img src="../image/icon.png" height="45">
-                                </a>
-
+                            <a href="icon.php">
+                                <img src="../image/icon.png" height="45">
+                            </a>
                         </nav>
                     </div>
                 </div>

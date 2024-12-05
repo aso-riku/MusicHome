@@ -35,7 +35,94 @@ function view_header() {
                             <a href="cart.php">
                                 <img src="../image/kart.png" height="55">
                             </a>
-                            <a href="icon.php">
+                            <a href="login.php">
+                                <img src="../image/icon.png" height="45">
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="header-inner">
+                    <nav class="link">
+                        <ul class="gnav_wrap">
+                            <li class="main_menu">
+                                <span class="sen">ギター</span>
+                                <ul class="sub_menu">
+                                    <li><a href="#">エレキギター</a></li>
+                                    <li><a href="#">アコースティックギター</a></li>
+                                    <li><a href="#">クラシックギター</a></li>
+                                    <li><a href="#">その他</a></li>
+                                </ul>
+                            </li>
+                            <li class="main_menu">
+                                <span class="sen">ベース</span>
+                                <ul class="sub_menu">
+                                    <li><a href="#">JBタイプ</a></li>
+                                    <li><a href="#">PBタイプ</a></li>
+                                    <li><a href="#">PJタイプ</a></li>
+                                    <li><a href="#">多弦ベース</a></li>
+                                </ul>
+                            </li>
+                            <li class="main_menu">
+                                <span class="sen">ドラム</span>
+                                <ul class="sub_menu">
+                                    <li><a href="#">ドラム</a></li>
+                                    <li><a href="#">スネア</a></li>
+                                    <li><a href="#">電子ドラム</a></li>
+                                    <li><a href="#">シンバル</a></li>
+                                </ul>
+                            </li>
+                            <li class="main_menu">
+                                <span class="sen">ピアノ</span>
+                                <ul class="sub_menu">
+                                    <li><a href="#">コンセプト1</a></li>
+                                    <li><a href="#">コンセプト2</a></li>
+                                    <li><a href="#">コンセプト3</a></li>
+                                    <li><a href="#">コンセプト4</a></li>
+                                </ul>
+                            </li>
+                            <li class="main_menu">
+                                <span class="sen">和楽器</span>
+                                <ul class="sub_menu">
+                                    <li><a href="#">コンセプト1</a></li>
+                                    <li><a href="#">コンセプト2</a></li>
+                                    <li><a href="#">コンセプト3</a></li>
+                                    <li><a href="#">コンセプト4</a></li>
+                                </ul>
+                            </li>
+                            <li class="main_menu">
+                                <span class="sen">周辺機器</span>
+                                <ul class="sub_menu">
+                                    <li><a href="#">コンセプト1</a></li>
+                                    <li><a href="#">コンセプト2</a></li>
+                                    <li><a href="#">コンセプト3</a></li>
+                                    <li><a href="#">コンセプト4</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+        </div>';
+}
+
+function view_header_manager() {
+    echo '<div class="fixed">
+            <header>
+                <div class="header">
+                    <a href="top_manager.php" class="logo">MusicHome</a>
+        
+                    <form method="get" action="search_result_manager.php" class="search_container">
+                        <input type="text" name="keyword" size="25" placeholder="　キーワード検索">
+                        <input type="submit" value="検索">
+                    </form>
+        
+                    <div class="header-site-menu">
+                        <nav class="site-menu">
+                            <a href="register_product.php">
+                                <img src="../image/kart.png" height="55">
+                            </a>
+                            <a href="login.php">
                                 <img src="../image/icon.png" height="45">
                             </a>
                         </nav>

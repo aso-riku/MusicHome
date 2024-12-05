@@ -1,0 +1,84 @@
+.buy {
+    width: 75%;
+    margin: 150px auto;
+    font-size: 20px;
+}
+
+.card {
+    background-color: rgb(250, 248, 246);
+}
+
+.product-area, .info {
+    padding: 3%;
+}
+
+.img {
+    width: 100%;
+}
+
+.name {
+    font-size: 1.1em;
+    font-weight: 1.4em;
+}
+
+.product-area {
+    margin-top: 20px;
+}
+
+.price {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+hr {
+    color: rgb(116, 116, 116);
+}
+
+.headline {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.buy-area {
+    padding: 40px 20px;
+    height: 320px;
+}
+
+.buy-area .flex {
+    text-align: center;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pay {
+    width: 20%;
+}
+
+.flex {
+    margin: 5px 0px;
+    width: 100%;
+}
+
+.seikyu {
+    font-size: 1.4em;
+}
+
+.seikyu-price {
+    font-size: 1.4em;
+    color: rgb(255, 45, 45);
+    font-weight: bold;
+}
+
+.hr {
+    margin: 5px 0px;
+}
+
+.buy-btn {
+    margin-top: 20px;
+    width: 100%;
+    color: white;
+    background-color: rgb(73, 73, 73);
+}

@@ -86,14 +86,15 @@
     border-radius: 10px;
 }
 
-.cart {
+.buy, .inventory {
     margin-top: 20px;
     background-color: rgb(73, 73, 73);
     color: white;
 }
 
-.buy {
-    background-color: rgb(255, 255, 255);
+.cart, .edit {
+    background-color: rgb(176, 176, 176);
+    color: white;
     border-color: rgb(32, 32, 32);
 }
 
@@ -141,15 +142,11 @@
 }
 
 .favorite {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: rgb(255, 48, 48);
     text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease;
+    border: none;
+    background-color: white;
 }
 
-.favorite:hover {
-    text-decoration: none;
-    color: inherit;
-    transform: scale(1.5);
-}
 

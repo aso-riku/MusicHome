@@ -27,17 +27,14 @@ $_SESSION['detail'] = $stmt->fetch();
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/Home.css">
     <link rel="stylesheet" href="../css/details_style.css">
-    <link rel="stylesheet" href="../css/overlay.css">
 </head>
 
 <body>
     <?php
     // ヘッダーを表示
-    view_header();
+    view_header_manager();
     ?>
-    <div id="overlay-message" class="overlay hidden">
-        <p id="overlay-text"></p>
-    </div>
+
     <article class="details">
         <section class="row gap-3 product-area">
             <div class="col image-area">
@@ -62,18 +59,6 @@ $_SESSION['detail'] = $stmt->fetch();
                 <div class="row">
                     <p class="col brand"><?= $_SESSION['detail']['brand_name'] ?></p>
                     <p class="col evaluation">
-                        <button class="favorite" href="#" data-product-id="<?= $_SESSION['detail']['product_id'] ?>">
-                            <?php
-                                $stmt = $pdo->prepare('SELECT * FROM favorite WHERE user_id = ? AND product_id = ?');
-                                $stmt->execute([$_SESSION['user']['user_id'], $_SESSION['detail']['product_id']]);
-                                $is_favorite = $stmt->fetch(); // 登録済みの場合データが返る
-                                
-                                // ハートマークの初期状態を設定
-                                $heart_icon = $is_favorite ? '♥' : '♡';
-
-                                echo $heart_icon;
-                            ?>
-                        </button>
                         <?php
                         echo avg_evaluation($_SESSION['detail']['product_id']);
                         ?>
@@ -97,14 +82,12 @@ $_SESSION['detail'] = $stmt->fetch();
                     ?>
                 </p>
                 <div class="btn-area">
-                    数量：
-                    <form action="buy.php" method="get">
-                        <input  class="number" type="number" name="volume" id="volume" value="1" min="1">
-                        <button class="btn buy" name="action" value="buy-now">今すぐ買う</button>
+                    <form action="inventory.php" method="get">
+                        <button type="submit" class="btn inventory" name="action" value="inventory">在庫管理</button>
                     </form>
-
-                    <button class="btn cart cart-btn" data-product-id="<?= $_SESSION['detail']['product_id'] ?>"
-                        name="action" value="cart">カートに入れる</button>
+                    <form action="product_edit.php" method="get">
+                        <button class="btn edit">商品情報編集</button>
+                    </form>
                 </div>
                 <hr class="hr2">
                 <p class="detail-title">この商品について</p>
@@ -116,21 +99,6 @@ $_SESSION['detail'] = $stmt->fetch();
 
         <section class="review-area">
             <p class="review-title">レビュー</p>
-            <form class="post-review-area" action="process.php" method="get">
-                <p class="post-review-title">レビューを書く</p>
-                <p class="post-evalution">
-                    評価：
-                    <select name="evaluation">
-                        <option value="5">5</option>
-                        <option value="4">4</option>
-                        <option value="3">3</option>
-                        <option value="2">2</option>
-                        <option value="1">1</option>
-                    </select>
-                </p>
-                <textarea class="post-review-body" name="review_body" placeholder="レビュー内容"></textarea>
-                <button class="btn post" type="submit" name="action" value="post">レビューを投稿</button>
-            </form>
 
             <?php 
             $stmt = $pdo->prepare('SELECT * FROM review A JOIN user B ON A.user_id = B.user_id WHERE product_id = ? AND review_body <> ""');

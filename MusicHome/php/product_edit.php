@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'common.php';
+$pdo = connect_db();
 ?>
 
 <!DOCTYPE html>
@@ -21,12 +22,18 @@ require_once 'common.php';
 <body>
     <?php
     view_header_manager();
+
+    $stmt = $pdo->prepare('SELECT * FROM products A JOIN inventory B ON A.product_id = B.product_id
+        JOIN product_images C ON A.product_id = C.product_id AND C.image_id = 1 JOIN genre D ON A.genre_id = D.genre_id WHERE A.product_id = ?');
+    $stmt->execute([$_SESSION['detail']['product_id']]);
+    $product_data = $stmt->fetch();
     ?>
+
     <div id="overlay-message" class="overlay hidden">
         <p id="overlay-text"></p>
     </div>
     <article class="register-product">
-        <p class="title">商品登録</p>
+        <p class="title">商品情報編集</p>
         <div class="container outline">
             <div class="outline-title">
                 <p>商品情報入力</p>
@@ -41,7 +48,7 @@ require_once 'common.php';
                         <p class="require">必須</p>
                     </div>
                     <div class="col-9">
-                        <input type="text" name="product_name" class="text-box form-controll">
+                        <input type="text" name="product_name" class="text-box" value="<?= $product_data['product_name'] ?>">
                     </div>
                 </div>
 
@@ -53,7 +60,7 @@ require_once 'common.php';
                         <p class="require">必須</p>
                     </div>
                     <div class="col-9">
-                        <input type="text" name="brand" class="text-box">
+                        <input type="text" name="brand" class="text-box" value="<?= $product_data['brand_name'] ?>">
                     </div>
                 </div>
 
@@ -66,6 +73,7 @@ require_once 'common.php';
                     </div>
                     <div class="col-9">
                         <select name="genre_id">
+                            <option value="<?= $product_data['genre_id'] ?>"><?= $product_data['genre_name'] ?></option>
                             <option value="01">アコースティックギター</option>
                             <option value="02">エレクトリックギター</option>
                         </select>
@@ -80,7 +88,7 @@ require_once 'common.php';
                         <p class="require">必須</p>
                     </div>
                     <div class="col-9">
-                        <input type="text" name="price" class="text-box center"> 円
+                        <input type="text" name="price" class="text-box center" value="<?= $product_data['price'] ?>"> 円
                     </div>
                 </div>
 
@@ -92,9 +100,15 @@ require_once 'common.php';
                         <p class="require">必須</p>
                     </div>
                     <div class="col-9">
-                        <textarea name="detail" class="detail"></textarea>
+                        <textarea name="detail" class="detail"><?= $product_data['product_detail'] ?></textarea>
                     </div>
                 </div>
+
+                <?php
+                $stmt = $pdo->prepare('SELECT image_url FROM product_images WHERE product_id = ? AND image_id > 1');
+                $stmt->execute([$_SESSION['detail']['product_id']]);
+                $row = $stmt->fetch();
+                ?>
 
                 <div>
                     <div class="row img-area">
@@ -116,7 +130,7 @@ require_once 'common.php';
                             <p class="require">必須</p>
                         </div>
                         <div class="col-9">
-                            <input type="input" name="main_image" class="text-box">
+                            <input type="input" name="main_image" class="text-box" value="<?= $product_data['image_url'] ?>">
                         </div>
                     </div>
 
@@ -128,9 +142,27 @@ require_once 'common.php';
 
                         </div>
                         <div class="col-9">
-                            <input type="input" name="sub_image[]" class="text-box">
+                            <input type="input" name="sub_image[]" class="text-box" value="<?= $row['image_url'] ?>">
                         </div>
                     </div>
+
+                    <?php
+                    while ($row = $stmt->fetch()) {
+                    ?>
+                        <div class="row sub-img-area">
+                            <div class="col-2">
+                                <p class="headline">　</p>
+                            </div>
+                            <div class="col-1">
+
+                            </div>
+                            <div class="col-9">
+                                <input type="input" name="sub_image[]" class="text-box" value="<?= $row['image_url'] ?>">
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
 
                 <button type="button" class="btn btn-outline-dark add">サブ画像追加</button>
@@ -142,7 +174,7 @@ require_once 'common.php';
                     <div class="col-1">
                     </div>
                     <div class="col-9">
-                        <input type="text" name="inventory" class="text-box center"> 個
+                        <input type="text" name="inventory" class="text-box center" value="<?= $product_data['inventory_volume'] ?>"> 個
                     </div>
                 </div>
 
@@ -154,15 +186,19 @@ require_once 'common.php';
 
                     </div>
                     <div class="col-9">
-                        <input type="text" name="LT" class="text-box center"> 日
+                        <input type="text" name="LT" class="text-box center" value="<?= $product_data['lead_time'] ?>"> 日
                     </div>
                 </div>
 
-                <button type="button" name="action" value="register" class="btn register">登録</button>
+                <div class="button-area">
+                    <button type="button" class="btn update">変更</button>
+                    <button type="button" class="btn delete">削除</button>
+                </div>
             </div>
         </div>
     </article>
-    <script src="../js/register_product.js"></script>
+
+    <script src="../js/product_edit.js"></script>
 </body>
 
 </html>

@@ -2,19 +2,24 @@ header {
   background-color: white;
 }
 
-.fixed{
+.fixed {
   width: 100%;
+  /* 必要な幅だけ指定 */
+  height: auto;
+  /* 必要な高さだけ指定 */
   position: fixed;
-  top: 0;
+  top: 0px;
+  /* 必要に応じて調整 */
+  left: 0px;
+  /* 必要に応じて調整 */
   z-index: 1000;
-  margin: auto;    
 }
 
-.yohaku{
+.yohaku {
   margin-top: 150px;
 }
 
-.header{
+.header {
   max-width: 100%;
   height: 70px;
   margin-left: auto;
@@ -22,10 +27,11 @@ header {
   padding-left: 40px;
   padding-right: 40px;
   display: flex;
-  justify-content: space-between; /* ヘッダーのためのコード */
+  justify-content: space-between;
+  /* ヘッダーのためのコード */
   align-items: center;
   font-family: serif;
-  
+
 }
 
 .header-inner {
@@ -36,10 +42,11 @@ header {
   padding-left: 40px;
   padding-right: 40px;
   display: flex;
-  justify-content: center; /* ナビゲーションを中央に配置するためのコード */
+  justify-content: center;
+  /* ナビゲーションを中央に配置するためのコード */
   align-items: center;
   font-family: serif;
-  
+
 }
 
 .header-site-menu {
@@ -49,7 +56,6 @@ header {
 .logo {
   color: black;
   font-size: 2em;
-  text-decoration: none;
 }
 
 .logo:hover {
@@ -57,7 +63,8 @@ header {
   color: inherit;
 }
 
-.site-menu a {
+.site-menu,
+a {
   margin: 5px;
 }
 
@@ -69,7 +76,7 @@ header {
   width: auto;
 }
 
-.guitar{
+.guitar {
   margin-top: 200px;
   width: 200px;
   border: 2px;
@@ -83,137 +90,267 @@ header {
   margin: 0 auto;
 }
 
-.fixed h2{
+.fixed h2 {
   margin-left: 100px;
   margin-top: 30px;
 }
 
-.rank{
+.rank {
   margin-left: 100px;
 }
 
-p.rank{
+p.rank {
   font-size: 20px;
 }
 
-.fixed a{
+.fixed a {
   text-decoration: none;
 }
 
 /* ナビゲーションバーの中央寄せ */
 nav {
-text-align: center;
-margin-top: 20px;
+  text-align: center;
 }
 
 /* ナビゲーションメニューの設定 */
 ul {
-list-style: none;
-padding: 0;
-/* display: inline-flex; */
-justify-content: center;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 /* メニュー項目のスタイル */
 nav ul li {
-float: none; /* フロートを無効に */
-font-size: 15px auto;
-/* border-radius: 5px; */
-/* margin: 10px; */
-padding-left: 10px;
-padding-right: 10px;
+  float: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 15px;
 }
 
-li{
+li {
   list-style: none;
 }
-.gnav_wrap{
-  max-width:100%;
-  /* margin:0 auto; */
-  display: flex; 
+
+.gnav_wrap {
+  display: flex;
   justify-content: center;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
 }
+
+/* メインメニューのスタイル */
 .main_menu {
-  width: 150px;
+  width: 160px;
   text-align: center;
-  color: black;
-  padding: 20px 0;
+  padding: 15px 10px;
   cursor: pointer;
   position: relative;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #ffffff;
 }
+
+.main_menu:hover {
+  /* ホバー時にダークカラー */
+  color: #fff;
+  /* テキストを白に */
+  transform: translateY(-3px);
+  /* ホバー時に浮く動き */
+}
+
+.main_menu>li:hover {
+  transform: translateX(5px);
+  /* ホバー時に少し右に動く */
+}
+
+/* サブメニューのスタイル */
 .sub_menu {
-position: absolute;
-width: 100%;
-top: 100%;
-left: -0px;
-/* display: flex; */
-gap: 10px;
-/* padding: 10px; */
-transition: all 0.3s ease;
-z-index: 1;
-opacity: 0; /* 初期は透明に */
-visibility: hidden; /* 初期は非表示 */
-}
-
-.main_menu:hover .sub_menu {
-opacity: 1; /* ホバー時に表示 */
-visibility: visible;
-}
-
-.main_menu:hover .main_menu {
-background-color: black;
-color: white;
-}
-
-.sub_menu:hover .li{
-opacity: 0.3;
-}
-
-.open {
-transform: translateY(20px);
-opacity: 1;
-visibility: visible;
-}
-.sub_menu>li{
-  background-color: white;
-  border: 1px solid ;
-  padding: 10px 20px; 
-   /* border-radius: 5px;  */
-  text-align: center;
-  min-width: 80px;
-  width: 100%;
-}
-
-.sub_menu>li:hover{
-  background: #f0f0f0;
-}
-
-p.sen{
-width: 80px;
-}
-
-nav.link{
-justify-content: center;
-}
-
-.menu-item {
-  position: relative;
-}
-
-.overlay-menu {
-  display: none; /* 初期状態で非表示 */
   position: absolute;
-  top: 50px; /* アイコンの下に配置 */
+  top: 100%;
+  /* 親要素の下に表示 */
   left: 0;
-  background-color: rgba(0, 0, 0, 0.8); /* 半透明の背景 */
-  color: white;
+  display: none;
+  /* 非表示がデフォルト */
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* 影を追加 */
+  z-index: 10;
+}
+
+.sub_menu>li {
+  padding: 10px 20px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: #343a40;
+  transition: all 0.3s ease;
+}
+
+.sub_menu>li:hover {
+  background-color: #e9ecef;
+  /* ホバー時の背景色 */
+  color: #495057;
+  transform: translateX(5px);
+  /* ホバー時に少し右に動く */
+}
+
+/* サブメニューの表示 */
+.main_menu:hover .sub_menu {
+  display: block;
+  animation: fadeIn 0.3s ease;
+  /* フェードイン効果 */
+}
+
+/* 第2階層メニューのスタイル */
+.second_menu {
+  width: 180px;
+  position: absolute;
+  font-size: 14px;
+  top: 0;
+  left: 100%;
+  /* 親メニューの右側に表示 */
+  display: none;
+  /* 非表示がデフォルト */
+  background-color: #f8f9fa;
+  border-radius: 15px;
+  padding: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.second_menu li {
+  padding: 10px 20px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: #343a40;
+  transition: all 0.3s ease;
+}
+
+.second_menu li:hover {
+  background-color: #e9ecef;
+  color: #495057;
+  transform: translateX(5px);
+  /* ホバー時に少し右に動く */
+}
+
+/* 第2階層メニューの表示 */
+.sub_menu li:hover .second_menu {
+  display: block;
+  animation: fadeIn 0.3s ease;
+  /* フェードイン効果 */
+}
+
+/* フェードインアニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.sen {
+  width: 80px;
+}
+
+nav.link {
+  justify-content: center;
+}
+
+/* メニューコンテナのスタイル */
+.menu-container {
+  position: relative;
+  /* 子要素をオーバーレイ表示するための基準 */
+  display: inline-block;
+  /* アイコンとメニューをまとめる */
+}
+
+/* オーバーレイメニューの初期スタイル */
+.overlay-menu {
+  display: none;
+  /* 初期状態では非表示 */
+  position: absolute;
+  /* 親要素に基づいて位置を設定 */
+  width: auto;
+  top: 50px;
+  /* アイコンの下に配置 */
+  left: -100px;
+  background-color: rgba(17, 17, 17, 0.8);
+  /* 半透明の背景 */
+  color: #fff;
+  /* テキストカラー */
   padding: 10px;
   border-radius: 5px;
-  z-index: 10;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  /* オーバーレイを最前面に表示 */
 }
 
-.menu-item:hover .overlay-menu {
-    display: block;
+/* オーバーレイメニューのリストスタイル */
+.overlay-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.overlay-menu ul li {
+  margin: 5px 0;
+}
+
+.profile {
+  color: #fff;
+  text-decoration: none;
+}
+
+.profile:hover {
+  color: inherit;
+}
+
+/* マウスホバー時に表示 */
+.menu-container:hover .overlay-menu {
+  display: block;
+  /* ホバー時に表示 */
+}
+
+.text-logout {
+  color: rgb(255, 61, 61);
+  text-decoration: none;
+}
+
+.text-login {
+  color: rgb(179, 186, 255);
+  text-decoration: none;
+}
+
+.text-logout:hover {
+  color: rgb(255, 61, 61);
+}
+
+.text-login:hover {
+  color: rgb(179, 186, 255);
+}
+
+.gnav_wrap a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.btn:hover {
+  transform: scale(1.02); /* ボタンを10%大きく */
+  color: white;
+}
+
+/* 基本スタイル */
+input[type="number"] {
+  border-radius: 5px;
 }

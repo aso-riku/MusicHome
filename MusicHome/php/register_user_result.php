@@ -5,51 +5,43 @@ require_once 'common.php';
 
 // 入力されたメールアドレス
 $mail_address1 = sanitize($_POST['mail_address1'] ?? '');
-$mail_address2 = sanitize($_POST['mail_address2'] ?? '');
 
 // メールアドレスのフォーマットを検証
-if ($mail_address1 === $mail_address2) {
-    if (!filter_var($mail_address1, FILTER_VALIDATE_EMAIL)) {
-        // registration.php にリダイレクト
-        $_SESSION['error_message'] = 'メールアドレスが有効ではありません。';
-        header("Location:register_user.php");
-        exit();
-    }
-} else {
+
+if (!filter_var($mail_address1, FILTER_VALIDATE_EMAIL)) {
     // registration.php にリダイレクト
-    $_SESSION['error_message'] = 'メールアドレスの入力に誤りがあります。';
+    $_SESSION['error_message'] = 'メールアドレスが有効ではありません。';
     header("Location:register_user.php");
     exit();
 }
 
+
 // 入力されたユーザー名
-if ($_POST['user_name_flg'] == 'same') {
-    $user_name = $mail_address1;
-} else {
-    $user_name = sanitize($_POST['user_name'] ?? '');
-    // ユーザー名のフォーマットを検証
-    if (!preg_match('/^(?=.*[a-zA-Z])[a-zA-Z0-9]{6,}$/', $user_name)) {
-        // registration.php にリダイレクト
-        $_SESSION['error_message'] = 'ユーザー名が有効ではありません。';
-        header("Location:register_user.php");
-        exit();
-    }
+
+$user_name = sanitize($_POST['user_name'] ?? '');
+// ユーザー名のフォーマットを検証
+if (!preg_match('/^(?=.*[a-zA-Z])[a-zA-Z0-9]{6,}$/', $user_name)) {
+    // registration.php にリダイレクト
+    $_SESSION['error_message'] = 'ユーザー名が有効ではありません。';
+    header("Location:register_user.php");
+    exit();
 }
 
 // 入力されたパスワード
-$password = sanitize($_POST['password']);
-if ($password == $user_name) {
-    // registration.php にリダイレクト
-    $_SESSION['error_message'] = 'ユーザー名と同じパスワードは設定できません。';
-    header("Location:register_user.php");
-    exit();
-} else {
-    if (!preg_match('/^[a-zA-Z0-9]{6,}$/', $password)) {
+$password1 = sanitize($_POST['password1']);
+$password2 = sanitize($_POST['password2']);
+
+if ($password1 == $password2) {
+    if (!preg_match('/^[a-zA-Z0-9]{6,}$/', $password1)) {
         // registration.php にリダイレクト
         $_SESSION['error_message'] = 'パスワードが有効ではありません。';
         header("Location:register_user.php");
         exit();
     }
+} else {
+    $_SESSION['error_message'] = 'パスワードが異なります';
+    header("Location:register_user.php");
+    exit();
 }
 
 // 入力された氏名
@@ -57,7 +49,7 @@ $sei = sanitize($_POST['sei']);
 $mei = sanitize($_POST['mei']);
 $sei_huri = sanitize($_POST['sei_huri']);
 $mei_huri = sanitize($_POST['mei_huri']);
-$real_name = $sei. $mei;
+$real_name = $sei . $mei;
 
 // 入力された住所
 $post_number = sanitize($_POST['post_number']);
@@ -65,7 +57,7 @@ $prefecture = sanitize($_POST['prefecture']);
 $city = sanitize($_POST['city']);
 $house_number = sanitize($_POST['house_number']);
 $house_name = sanitize($_POST['hosue_name'] ?? '');
-$address = $prefecture. $city. $house_number. $house_name;
+$address = $prefecture . $city . $house_number . $house_name;
 
 // 郵便番号のフォーマットを検証
 if (!preg_match('/^\d{7}$/', $post_number)) {
@@ -84,7 +76,7 @@ $stmt->execute([$_POST['mail_address1']]);
 if ($stmt->fetchColumn() == 0) {
     // 登録
     $stmt = $pdo->prepare('INSERT INTO user(user_name, real_name, address, mail_address, password) VALUES (?,?,?,?,?)');
-    $result = $stmt->execute([$user_name, $real_name, $address, $mail_address1, $password]);
+    $result = $stmt->execute([$user_name, $real_name, $address, $mail_address1, $password1]);
 } else {
     // registration にリダイレクト
     $_SESSION['error_message'] = 'このメールアドレスは既に登録されています。';

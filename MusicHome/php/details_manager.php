@@ -9,8 +9,8 @@ $pdo = connect_db();
 $product_id = $_GET['product_id'];
 
 // 商品詳細を取得
-$stmt = $pdo->prepare('SELECT * FROM products A JOIN product_images B ON A.product_id = B.product_id AND image_id = 1 
-    JOIN inventory C ON A.product_id = C.product_id WHERE A.product_id = ?');
+$stmt = $pdo->prepare('SELECT * FROM products A LEFT OUTER JOIN product_images B ON A.product_id = B.product_id AND image_id = 1 
+    LEFT OUTER JOIN inventory C ON A.product_id = C.product_id LEFT OUTER JOIN genre D on A.genre_id = D.genre_id WHERE A.product_id = ?');
 $stmt->execute([$product_id]);
 $_SESSION['detail'] = $stmt->fetch();
 ?>
@@ -41,7 +41,7 @@ $_SESSION['detail'] = $stmt->fetch();
                 <div class="row">
                     <div class="col-2 sub-img-area">
                         <?php
-                        $stmt = $pdo->prepare('SELECT image_url FROM product_images WHERE product_id = ?');
+                        $stmt = $pdo->prepare('SELECT image_url FROM product_images WHERE product_id = ? AND image_id > 1');
                         $stmt->execute([$_SESSION['detail']['product_id']]);
 
                         while ($row = $stmt->fetch()) {
@@ -55,6 +55,7 @@ $_SESSION['detail'] = $stmt->fetch();
                 </div>
             </div>
             <div class="col detail-area">
+                <p class="genre"><?= $_SESSION['detail']['genre_name'] ?></p>
                 <p class="name"><?= $_SESSION['detail']['product_name'] ?></p>
                 <div class="row">
                     <p class="col brand"><?= $_SESSION['detail']['brand_name'] ?></p>
@@ -66,7 +67,7 @@ $_SESSION['detail'] = $stmt->fetch();
                 </div>
                 <hr class="hr1">
                 <p class="price">¥ <?= number_format($_SESSION['detail']['price']) ?></p>
-                <?php                
+                <?php
                 if ($_SESSION['detail']['inventory_volume'] > 3) {
                     echo '<p class="in-stock">在庫あり</p>';
                 } else {
@@ -100,7 +101,7 @@ $_SESSION['detail'] = $stmt->fetch();
         <section class="review-area">
             <p class="review-title">レビュー</p>
 
-            <?php 
+            <?php
             $stmt = $pdo->prepare('SELECT * FROM review A JOIN user B ON A.user_id = B.user_id WHERE product_id = ? AND review_body <> ""');
             $stmt->execute([$_SESSION['detail']['product_id']]);
 

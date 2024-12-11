@@ -166,27 +166,8 @@ function showOverlayMessage(message) {
     }, 1500); // 3秒後に非表示
 }
 
-// サブ画像追加ボタンのイベントリスナー
-document.querySelector('.add').addEventListener('click', function () {
-    // サブ画像エリア (sub-img-area) の親要素を取得
-    const subImgArea = document.querySelector('.sub-img-area');
 
-    // 新しい行を作成
-    const newRow = document.createElement('div');
-    newRow.classList.add('row', 'sub-img-area'); // 同じクラスを付与
 
-    // 新しい列を作成
-    newRow.innerHTML = `
-        <div class="col-2">
-        </div>
-        <div class="col-1"></div>
-        <div class="col-9">
-            <input type="input" name="sub_image[]" class="text-box">
-        </div>
-    `;
 
-    // サブ画像エリアの親要素に新しい行を追加
-    subImgArea.parentNode.appendChild(newRow);
-});
 
 

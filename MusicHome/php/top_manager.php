@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -24,7 +28,7 @@
         <div id="carouselExampleFade" class="carousel slide carousel-fade">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://birdlandguitars.com/files/tears2/d/header.jpg" class="d-block w-100" alt="...">
+                    <img src="https://gibson.jp/wp/wp-content/uploads/2019/07/Acoustic_Landing_Header_G45.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
                     <img src="https://birdlandguitars.com/files/tears2/d/header.jpg" class="d-block w-100" alt="...">
@@ -46,149 +50,43 @@
 </body>
 <!-- ランキング -->
 <main>
-    <section class="ranking">
-        <div class="section" id="r_ranking">
-            <img src="/images/original_design_default/samplesource/3/ranking_title.gif" alt="ランキング" class="titleMgn">
-            <ul class="clear">
-                <!-- ←ランキング1位～5位を表示 -->
-                <li class="rankList" id="rank[RANK_NO]">
-                    <em>[RANK_NO]</em>
-                    <div class="rankImg"><a href=[RANK_ITEMDETAIL]>[RANK_IMG_M]</a></div>
-                    <div class="rankDetail">
-                        <p class="rankName"><a href=[RANK_ITEMDETAIL]>[RANK_BRANDNAME]</a></p>
-                        <p class="rankPrice">[RANK_PRICE]</p>
-                    </div>
-                </li>
-
-            </ul>
-        </div>
-
+    <form action="details_manager.php" method="get" class="ranking-area">
+        <p class="ranking-title">RANKING</p>
+        <p class="genre-title"><span>ギターランキング</span></p>
+        <?php
+        get_ranking('100');
+        ?>
 
         <!-- ベースランキング -->
-        <h2>ベースランキング</h2>
-        <div class="flex">
-            <div class="rank1">
-                <img src="../image/sample.jpg" width="100px">
-                <p>aaaaaaaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-        </div>
+        <p class="genre-title"><span>ベースランキング</span></p>
+        <?php
+        get_ranking('100');
+        ?>
 
         <!-- ドラムランキング -->
-        <h2>ドラムランキング</h2>
-        <div class="flex">
-            <div class="rank1">
-                <img src="../image/sample.jpg" width="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-        </div>
+        <p class="genre-title"><span>ドラムランキング</span></p>
+        <?php
+        get_ranking('100');
+        ?>
 
         <!-- ピアノランキング -->
-        <h2>ピアノランキング</h2>
-        <div class="flex">
-            <div class="rank1">
-                <img src="../image/sample.jpg" width="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-        </div>
+        <p class="genre-title"><span>ピアノランキング</span></p>
+        <?php
+        get_ranking('100');
+        ?>
 
         <!-- 和楽器ランキング -->
-        <h2>和楽器ランキング</h2>
-        <div class="flex">
-            <div class="rank1">
-                <img src="../image/sample.jpg" width="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-        </div>
+        <p class="genre-title"><span>和楽器ランキング</span></p>
+        <?php
+        get_ranking('100');
+        ?>
 
         <!-- 周辺機器ランキング -->
-        <h2>周辺機器ランキング</h2>
-        <div class="flex">
-            <div class="rank1">
-                <img src="../image/sample.jpg" width="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-        </div>
-    </section>
+        <p class="genre-title"><span>周辺機器ランキング</span></p>
+        <?php
+        get_ranking('100');
+        ?>
+    </form>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0xP7q3y5xwQ5sqjT9r5r5rkXg2qXYtEws0+zI+uyfaO6H5f2" crossorigin="anonymous"></script>
 

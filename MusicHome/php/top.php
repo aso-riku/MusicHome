@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -20,204 +24,69 @@
     ?>
 
     <!-- スライド -->
-    <div class="yohaku">
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
+    <article class="top">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade">
             <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="10000">
-                    <img src="../image/elect.YAMAHA.avif" class="d-block" alt="../image/elect.YAMAHA.avif">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
-                </div>
-                <div class="carousel-item" data-bs-interval="2000">
-                    <img src="https://www.soundhouse.co.jp/images/shop/prod_img/f/fender_560-2900-366.jpg" class="d-block" alt="../image/elect.YAMAHA.avif">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
-                    </div>
+                <div class="carousel-item active">
+                    <img src="https://gibson.jp/wp/wp-content/uploads/2019/07/Acoustic_Landing_Header_G45.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://www.soundhouse.co.jp/images/shop/prod_img/j/jac_291-0131-576qa.jpg" class="d-block" alt="../image/elect.YAMAHA.avif">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
-                    </div>
+                    <img src="https://birdlandguitars.com/files/tears2/d/header.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://birdlandguitars.com/files/tears2/d/header.jpg" class="d-block w-100" alt="...">
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        
-    </div>
+    </article>
 </body>
 <!-- ランキング -->
 <main>
-    <section class="ranking">
-        <!-- ギターランキング -->
-        <h2>ギターランキング</h2>
-        <div class="flex">
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <h6>aaaaaaaaaaaaa<h6>
-                <p>aaaaaaaaaaaaaaaaaaa</p>
-                <h5>139,000</h5>
-                
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-        </div>
-        
+    <form action="details_user.php" method="get" class="ranking-area">
+        <p class="ranking-title">RANKING</p>
+        <p class="genre-title"><span>ギターランキング</span></p>
+        <?php
+        get_ranking('100');
+        ?>
+
         <!-- ベースランキング -->
-        <h2>ベースランキング</h2>
-        <div class="flex">
-            <div class="rank1">
-                <img src="../image/sample.jpg" width="100px">
-                <p>aaaaaaaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-        </div>
-        
+        <p class="genre-title"><span>ベースランキング</span></p>
+        <?php
+        get_ranking('100');
+        ?>
+
         <!-- ドラムランキング -->
-        <h2>ドラムランキング</h2>
-        <div class="flex">
-            <div class="rank1">
-                <img src="../image/sample.jpg" width="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-        </div>
-        
+        <p class="genre-title"><span>ドラムランキング</span></p>
+        <?php
+        get_ranking('100');
+        ?>
+
         <!-- ピアノランキング -->
-        <h2>ピアノランキング</h2>
-        <div class="flex">
-            <div class="rank1">
-                <img src="../image/sample.jpg" width="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-        </div>
+        <p class="genre-title"><span>ピアノランキング</span></p>
+        <?php
+        get_ranking('100');
+        ?>
 
         <!-- 和楽器ランキング -->
-        <h2>和楽器ランキング</h2>
-        <div class="flex">
-            <div class="rank1">
-                <img src="../image/sample.jpg" width="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-        </div>
+        <p class="genre-title"><span>和楽器ランキング</span></p>
+        <?php
+        get_ranking('100');
+        ?>
 
         <!-- 周辺機器ランキング -->
-        <h2>周辺機器ランキング</h2>
-        <div class="flex">
-            <div class="rank1">
-                <img src="../image/sample.jpg" width="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-            <div class="rank1">
-                <img src="../image/sample.jpg" height="100px">
-                <p>aaaaaaaaaaaaa</p>
-            </div>
-        </div>
-    </section>
+        <p class="genre-title"><span>周辺機器ランキング</span></p>
+        <?php
+        get_ranking('100');
+        ?>
+    </form>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0xP7q3y5xwQ5sqjT9r5r5rkXg2qXYtEws0+zI+uyfaO6H5f2" crossorigin="anonymous"></script>
 

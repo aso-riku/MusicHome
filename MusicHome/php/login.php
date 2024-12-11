@@ -1,5 +1,8 @@
 <?php
-require_once 'common.php';
+session_start();
+if ($_GET['action'] ?? '' == 'logout') {
+    session_unset();
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,41 +20,40 @@ require_once 'common.php';
 
 <body>
     <?php
-
-    // ヘッダー表示
-    view_header();
+    require_once 'common.php';
     ?>
-
+    <p class="logo"><a href="top.php">MusicHome</a></p>
     <article class="login">
         <section class="title">
-            <h1>Music Home会員ログイン</h1>
+            <h1>LOGIN</h1>
         </section>
         <section class="row inner">
-            <section class="col-7">
+            <!-- ログインフォーム -->
+            <section class="col-6 form">
                 <form action="process.php" method="post">
-                    <div class="row form">
-                        <label class="col-3 label">ユーザー名</label>
-                        <input class="col-9 text-box" type="text" name="user_name" placeholder="半角英数字"><br>
+                    <div class="cp_iptxt">
+                        <input class="ef" type="text" name="user_name" placeholder="">
+                        <label>ユーザー名</label>
+                        <span class="focus_line"><i></i></span>
                     </div>
-                    <div class="row form">
-                        <label class="col-3 label">パスワード</label>
-                        <input class="col-9 text-box" type="password" name="password" placeholder="半角英数字"><br>
+                    <div class="cp_iptxt">
+                        <input class="ef" type="password" name="password" placeholder="">
+                        <label>パスワード</label>
+                        <span class="focus_line"><i></i></span>
                     </div>
                     <div class="button-area">
-                        <button type="submit" name="action" value="login_user" class="btn btn-primary">ログイン</button>
+                        <button type="submit" name="action" value="login_user" class="btn btn-dark">ログイン</button>
                         <button type="submit" name="action" value="login_manager" class="btn btn-dark">管理者としてログイン</button>
                     </div>
+                    <p class="forgot-password"><a href="#">パスワードをお忘れの方はこちら »</a></p>
                 </form>
             </section>
 
-            <section class="col-5 ">
-                <p>まだMusic Home会員に登録されていない方</p>
-                <button onclick="location.href='register_user.php'" class="btn btn-outline-dark">会員に新規登録</button>
-            </section>
-
-            <section>
-                <p>ユーザー名・パスワードを忘れた場合</p>
-                <p>ヘルプ</p>
+            <!-- 新規登録セクション -->
+            <section class="col register-section">
+                <h2>はじめてご利用の方</h2>
+                <p>お買い物には会員登録が必要です</p>
+                <button onclick="location.href='register_user.php'" class="btn btn-outline-dark">新規会員登録</button>
             </section>
         </section>
     </article>

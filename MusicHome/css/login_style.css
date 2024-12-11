@@ -1,136 +1,170 @@
+/* 全体のスタイル */
 body {
-  margin-top: 150px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f8f8;
+  margin: 0;
+  padding: 0;
 }
 
-.registration {
-  font-size: 1.17em;
+.logo {
+  font-family: serif;
+  position: fixed;
+  top: 11px;
+  left: 40px;
+  color: black;
+  font-size: 2em;
 }
 
+.logo a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+/* ログインセクション */
+.login {
+  width: 80%;
+  max-width: 900px;
+  margin: 140px auto 0 auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* タイトル */
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title h1 {
+  font-size: 2.5rem;
+  color: #000;
+}
+
+/* インナーセクション */
 .inner {
-  margin: 40px 0px 20px 0px;
-  padding-left: 100px;
-  width: 90%;
+  display: flex;
+  gap: 20px;
 }
 
-.text-box {
-  border: none;
+.form,
+.register-section {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.cp_iptxt {
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.cp_iptxt input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   outline: none;
-  border-bottom: 0.5px solid;
-  text-align: left;
-  margin: 8px;
-  width: 65%;
-  font-size: 25px;
 }
 
-.form {
-  margin-top: 40px;
+.cp_iptxt label {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  font-size: 0.9rem;
+  color: #666;
+  background: #fff;
+  padding: 0 5px;
+}
+
+.cp_iptxt .focus_line {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #333;
+  transition: width 0.3s;
+}
+
+.cp_iptxt input:focus + .focus_line {
+  width: 100%;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background: #000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
   margin-bottom: 10px;
 }
 
-.login .label { 
-  font-size: 30px;
-  vertical-align: center;
-  text-align: left;
-  font-weight: bold;
+button:hover {
+  background: #333;
 }
 
-.title {
-  border-left: 10px solid rgb(79, 79, 255);
-  padding-left: 15px;
-  margin: 60px 70px 20px 70px;
-}
-
-.button-area {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 40px;
-  margin-bottom: 70px;
-}
-
-.button-area .btn {
-  border-radius: 100px;
-  width: 250px;
-  height: 70px;
-  margin-top:40px;
-  font-size: 20px;
-}
-
-.login .inner p {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.login .inner .col-5 {
+.forgot-password {
+  margin-top: 10px;
+  font-size: 0.9rem;
   text-align: center;
 }
 
-.login .inner .col-5 .btn {
-  width:270px;
-  height: 65px;
-  border-radius: 10px;
-  margin: 10px;
-  font-size: 20px;
+.forgot-password a {
+  color: #555;
+  text-decoration: none;
 }
 
-.registration .col-3 {
-  padding-left: 150px ;
+.forgot-password a:hover {
+  text-decoration: underline;
 }
 
-.registration .col-8 {
-  padding-left: 70px;
+/* 新規登録セクション */
+.register-section h2 {
+  font-size: 1.2rem;
+  margin-top: 60px;
+  margin-bottom: 10px;
+  color: #333;
 }
 
-.registration h4 {
-  color: rgb(255, 48, 48)
+.register-section p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #666;
 }
 
-.mail {
-  margin-top: 50px;
+.register-section button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.registration .row {
-  margin-bottom: 30px;
+.register-section button:hover {
+  background: #333;
 }
 
-.registration .text-box {
-  font-size: 20px;
-}
-
-.info {
-  border-left: 10px solid rgb(79, 79, 255);
-  padding-left: 15px;
-  margin: 60px 70px 40px 70px;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-.text-name {
-  width: 25%;
-}
-
-.regi_result {
+/* フッター */
+.login-footer {
+  margin-top: 30px;
+  font-size: 0.8rem;
+  color: #666;
   text-align: center;
-  margin-top: 250px;
+  line-height: 1.5;
 }
 
-.regi_result h1 {
-  font-size: 45px;
-  margin-bottom: 30px;
+.btn:hover {
+  transform: scale(1.02); /* ボタンを10%大きく */
 }
-
-.regi_result .btn {
-  width: 150px;
-  height: 40px;
-  border-radius: 100px;
-}
-
-.side {
-  display: flex;
-}
-
-.side div {
-  width: 37%;
-}
-
-
-

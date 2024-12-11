@@ -33,5 +33,6 @@
 
 .minus {
     background-color: rgb(176, 176, 176);
-        color: white;
+    color: white;
+    margin-top: 10px;
 }

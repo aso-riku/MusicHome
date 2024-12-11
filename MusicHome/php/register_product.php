@@ -20,6 +20,8 @@ require_once 'common.php';
 
 <body>
     <?php
+    require_once 'common.php';
+    $pdo = connect_db();
     view_header_manager();
     ?>
     <div id="overlay-message" class="overlay hidden">
@@ -41,7 +43,7 @@ require_once 'common.php';
                         <p class="require">必須</p>
                     </div>
                     <div class="col-9">
-                        <input type="text" name="product_name" class="text-box form-controll">
+                        <input type="text" name="product_name" class="text-box">
                     </div>
                 </div>
 
@@ -57,7 +59,7 @@ require_once 'common.php';
                     </div>
                 </div>
 
-                <dvi class="row genre-area">
+                <div class="row genre-select-area">
                     <div class="col-2">
                         <p class="headline">ジャンル</p>
                     </div>
@@ -65,12 +67,20 @@ require_once 'common.php';
                         <p class="require">必須</p>
                     </div>
                     <div class="col-9">
-                        <select name="genre_id">
-                            <option value="01">アコースティックギター</option>
-                            <option value="02">エレクトリックギター</option>
-                        </select>
+                        <div class="genre-area">
+                            <select name="genre_id[]" id="genre-1" class="form-control genre-select">
+                                <option value="">選択してください</option>
+                                <?php
+                                foreach ($pdo->query('SELECT * FROM genre') as $genre) {
+                                    if ($genre['higher_genre_id'] == '') { // 最上位ジャンルのみ
+                                        echo '<option value="', $genre['genre_id'], '">', $genre['genre_name'], '</option>';
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
                     </div>
-                </dvi>
+                </div>
 
                 <div class="row price-area">
                     <div class="col-2">

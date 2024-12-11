@@ -202,8 +202,11 @@ if ($data['action'] == 'update') {
 
     $stmt = $pdo->prepare('UPDATE inventory SET inventory_volume = inventory_volume + ? WHERE product_id = ?');
     $stmt->execute([$volume, $_SESSION['detail']['product_id']]);
+    $stmt = $pdo->prepare('SELECT inventory_volume FROM inventory WHERE product_id = ?');
+    $stmt->execute([$_SESSION['detail']['product_id']]);
+    $inventory_volume = $stmt->fetchColumn();
 
-    echo json_encode(['success' => true]);
+    echo json_encode(['success' => true, 'inventory_volume' => number_format($inventory_volume)]);
 
     // 在庫を減らす
 } else if ($data['action'] == 'minus') {
@@ -211,8 +214,11 @@ if ($data['action'] == 'update') {
 
     $stmt = $pdo->prepare('UPDATE inventory SET inventory_volume = inventory_volume - ? WHERE product_id = ?');
     $stmt->execute([$volume, $_SESSION['detail']['product_id']]);
+    $stmt = $pdo->prepare('SELECT inventory_volume FROM inventory WHERE product_id = ?');
+    $stmt->execute([$_SESSION['detail']['product_id']]);
+    $inventory_volume = $stmt->fetchColumn();
 
-    echo json_encode(['success' => true]);
+    echo json_encode(['success' => true, 'inventory_volume' => $inventory_volume]);
 
     // 商品登録
 } else if ($data['action'] == 'register') {
@@ -258,13 +264,20 @@ if ($data['action'] == 'update') {
     // 商品更新
 } else if ($data['action'] == 'product_update') {
     try {
+        $genre_id = '';
+        if ($data['genre_id'] == null) {
+            $genre_id = $data['old_genre_id'];
+        } else {
+            $genre_id = $data['genre_id'];
+        }
+
         $stmt = $pdo->prepare('UPDATE products SET product_name = ?, product_detail = ?, price = ?, lead_time = ?, genre_id = ?, brand_name = ? WHERE product_id = ?');
         $stmt->execute([
             $data['product_name'],
             $data['detail'],
             $data['price'],
             $data['LT'],
-            $data['genre_id'],
+            $genre_id,
             $data['brand'],
             $_SESSION['detail']['product_id']
         ]);
@@ -272,13 +285,22 @@ if ($data['action'] == 'update') {
         $stmt = $pdo->prepare('UPDATE product_images SET image_url = ? WHERE product_id = ? AND image_id = 1');
         $stmt->execute([$data['main_image'], $_SESSION['detail']['product_id']]);
 
+        $stmt = $pdo->prepare('SELECT MAX(image_id) AS MAX_image_id FROM product_images WHERE product_id = ?');
+        $stmt->execute([$_SESSION['detail']['product_id']]);
+        $max_image_id = $stmt->fetchColumn();
+
         $image_id = 1;
         if (!empty($data['sub_image'])) {
             $stmt = $pdo->prepare('UPDATE product_images SET image_url = ? WHERE product_id = ? AND image_id = ?');
             foreach ($data['sub_image'] as $subImage) {
                 if (!empty($subImage)) {
                     $image_id += 1;
-                    $stmt->execute([$subImage, $_SESSION['detail']['product_id'], $image_id]);
+                    if ($image_id > $max_image_id) {
+                        $stmt1 = $pdo->prepare('INSERT INTO product_images VALUES(?,?,?)');
+                        $stmt1->execute([$_SESSION['detail']['product_id'], $image_id, $subImage]);
+                    } else {
+                        $stmt->execute([$subImage, $_SESSION['detail']['product_id'], $image_id]);
+                    }
                 }
             }
         }
@@ -289,7 +311,11 @@ if ($data['action'] == 'update') {
         $stmt = $pdo->prepare('UPDATE inventory SET inventory_volume = ? WHERE product_id = ?');
         $stmt->execute([$data['inventory'], $_SESSION['detail']['product_id']]);
 
-        echo json_encode(['success' => true]);
+        $stmt = $pdo->prepare('SELECT genre_name, A.genre_id FROM products A JOIN genre B ON A.genre_id = B.genre_id WHERE product_id = ?');
+        $stmt->execute([$_SESSION['detail']['product_id']]);
+        $row = $stmt->fetch();
+
+        echo json_encode(['success' => true, 'old_genre_id' => $row['genre_id'], 'old_genre_name'=> $row['genre_name']]);
     } catch (Exception $e) {
         echo json_encode(['success' => false, 'message' => $e->getMessage()]);
     }

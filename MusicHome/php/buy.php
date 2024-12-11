@@ -78,7 +78,7 @@ $pdo = connect_db();
                     <?php
                         }
                     } else if ($_GET['action'] == 'buy-now') {
-                        $stmt = $pdo->prepare('SELECT * FROM products A JOIN product_images B ON A.product_id = B.product_id AND image_id = 1 WHERE A.product_id = ?');
+                        $stmt = $pdo->prepare('SELECT * FROM products A LEFT OUTER JOIN product_images B ON A.product_id = B.product_id AND image_id = 1 WHERE A.product_id = ?');
                         $stmt->execute([$_SESSION['detail']['product_id']]);
                         $row = $stmt->fetch();
                         $volume = $_GET['volume'];

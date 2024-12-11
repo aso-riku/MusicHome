@@ -144,5 +144,19 @@
     margin-left: 28%;
 }
 
+#genre-container {
+    margin-top: 10px;
+}
+
+.genre-area {
+    display: flex;
+    gap: 15px; /* セレクトボックス間の間隔 */
+    align-items: center; /* セレクトボックスの縦位置を揃える */
+}
+
+.genre-select {
+    width: 30%; /* セレクトボックスの最小幅 */
+}
+
 
 

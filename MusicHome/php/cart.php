@@ -4,6 +4,10 @@ require_once 'common.php';
 
 // データベース接続
 $pdo = connect_db();
+
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +27,8 @@ $pdo = connect_db();
     <?php
     view_header();
 
-    $stmt = $pdo->prepare('SELECT * FROM cart A JOIN products B ON A.product_id = B.product_id JOIN product_images C ON A.product_id = C.product_id
-    AND image_id = 1 JOIN inventory D ON A.product_id = D.product_id WHERE A.user_id = ?');
+    $stmt = $pdo->prepare('SELECT * FROM cart A LEFT OUTER JOIN products B ON A.product_id = B.product_id LEFT OUTER JOIN product_images C ON A.product_id = C.product_id
+    AND image_id = 1 LEFT OUTER JOIN inventory D ON A.product_id = D.product_id WHERE A.user_id = ?');
     $stmt->execute([$_SESSION['user']['user_id']]);
     $count = $stmt->rowCount();
     ?>

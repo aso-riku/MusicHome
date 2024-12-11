@@ -23,8 +23,8 @@ $pdo = connect_db();
     <?php
     view_header_manager();
 
-    $stmt = $pdo->prepare('SELECT * FROM products A JOIN inventory B ON A.product_id = B.product_id
-        JOIN product_images C ON A.product_id = C.product_id AND C.image_id = 1 JOIN genre D ON A.genre_id = D.genre_id WHERE A.product_id = ?');
+    $stmt = $pdo->prepare('SELECT * FROM products A LEFT OUTER JOIN inventory B ON A.product_id = B.product_id
+        LEFT OUTER JOIN product_images C ON A.product_id = C.product_id AND C.image_id = 1 LEFT OUTER JOIN genre D ON A.genre_id = D.genre_id WHERE A.product_id = ?');
     $stmt->execute([$_SESSION['detail']['product_id']]);
     $product_data = $stmt->fetch();
     ?>
@@ -64,7 +64,7 @@ $pdo = connect_db();
                     </div>
                 </div>
 
-                <dvi class="row genre-area">
+                <div class="row genre-select-area">
                     <div class="col-2">
                         <p class="headline">ジャンル</p>
                     </div>
@@ -72,13 +72,28 @@ $pdo = connect_db();
                         <p class="require">必須</p>
                     </div>
                     <div class="col-9">
-                        <select name="genre_id">
-                            <option value="<?= $product_data['genre_id'] ?>"><?= $product_data['genre_name'] ?></option>
-                            <option value="01">アコースティックギター</option>
-                            <option value="02">エレクトリックギター</option>
-                        </select>
+                        <?php
+                        $stmt = $pdo->prepare('SELECT genre_name, A.genre_id FROM products A JOIN genre B ON A.genre_id = B.genre_id WHERE product_id = ?');
+                        $stmt->execute([$_SESSION['detail']['product_id']]);
+                        $row = $stmt->fetch();
+                        ?>
+
+                        <p id="old-genre-name"><?= $row['genre_name'] ?></p>
+                        <input type="hidden" id="old-genre-id" name="old_genre_id" value="<?= $row['genre_id'] ?>">
+                        <div class="genre-area">
+                            <select name="genre_id[]" id="genre-1" class="form-control genre-select">
+                                <option value="">選択してください</option>
+                                <?php
+                                foreach ($pdo->query('SELECT * FROM genre') as $genre) {
+                                    if ($genre['higher_genre_id'] == '') { // 最上位ジャンルのみ
+                                        echo '<option value="', $genre['genre_id'], '">', $genre['genre_name'], '</option>';
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
                     </div>
-                </dvi>
+                </div>
 
                 <div class="row price-area">
                     <div class="col-2">

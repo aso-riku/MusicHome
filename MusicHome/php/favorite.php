@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -31,7 +35,7 @@ session_start();
             <?php
             echo '<h4>', $_SESSION['user']['user_name'], ' さんのお気に入り</h4>';
 
-            $stmt = $pdo->prepare('SELECT * FROM favorite A JOIN products B ON A.product_id = B.product_id JOIN product_images C ON A.product_id = C.product_id AND image_id = 1 WHERE user_id = ?');
+            $stmt = $pdo->prepare('SELECT * FROM favorite A LEFT OUTER JOIN products B ON A.product_id = B.product_id LEFT OUTER JOIN product_images C ON A.product_id = C.product_id AND image_id = 1 WHERE user_id = ?');
             $stmt->execute([$_SESSION['user']['user_id']]);
 
             view_product_list($stmt);

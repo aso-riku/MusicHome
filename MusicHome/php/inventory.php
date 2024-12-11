@@ -25,8 +25,8 @@ $pdo = connect_db();
     <?php
     view_header_manager();
 
-    $stmt = $pdo->prepare('SELECT * FROM products A JOIN product_images B ON A.product_id = B.product_id AND image_id = 1
-        JOIN inventory C ON A.product_id = C.product_id WHERE A.product_id = ?');
+    $stmt = $pdo->prepare('SELECT * FROM products A LEFT OUTER JOIN product_images B ON A.product_id = B.product_id AND image_id = 1
+        LEFT OUTER JOIN inventory C ON A.product_id = C.product_id WHERE A.product_id = ?');
     $stmt->execute([$_SESSION['detail']['product_id']]);
     $data = $stmt->fetch();
     ?>
@@ -44,10 +44,9 @@ $pdo = connect_db();
                 <p class="inventory-volume">在庫：<b><?= $data['inventory_volume'] ?></b> 個</p>
                 更新数量：<input type="number" id="volume" class="input-volume" value="1" min="1">
                 <div class="btn-area">
-                    <button class="btn inventory plus" value="plus">増やす</button>
-                    <button class="btn inventory minus" value="minus">減らす</button>
+                    <button class="btn inventory-btn plus" value="plus">増やす</button>
+                    <button class="btn inventory-btn minus" value="minus">減らす</button>
                 </div>
-
             </div>
         </div>
     </article>

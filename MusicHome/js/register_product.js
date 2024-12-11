@@ -25,12 +25,20 @@ document.querySelector('.add').addEventListener('click', function () {
 document.querySelector('.register').addEventListener('click', async function (event) {
     event.preventDefault(); // 通常の動作を防ぐ
 
+    // 最下層のジャンルを取得
+    const genreSelects = Array.from(document.querySelectorAll('.genre-select'));
+    const selectedGenreIds = genreSelects
+        .map(select => select.value)
+        .filter(value => value !== ''); // 未選択の値を除外
+
+    const lastGenreId = selectedGenreIds[selectedGenreIds.length - 1] || null;
+
     // 入力データを収集
     const formData = {
         action: 'register',
         product_name: document.querySelector('input[name="product_name"]').value,
         brand: document.querySelector('input[name="brand"]').value,
-        genre_id: document.querySelector('select[name="genre_id"]').value,
+        genre_id: lastGenreId,
         price: document.querySelector('input[name="price"]').value,
         detail: document.querySelector('textarea[name="detail"]').value,
         main_image: document.querySelector('input[name="main_image"]').value,
@@ -77,3 +85,47 @@ function showOverlayMessage(message) {
         overlay.classList.add('hidden');
     }, 1500); // 3秒後に非表示
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const genreArea = document.querySelector('.genre-area');
+
+    genreArea.addEventListener('change', function (event) {
+        const target = event.target;
+        if (target.classList.contains('genre-select')) {
+            const higherGenreId = target.value;
+
+            // 子ジャンル取得のためのAJAXリクエスト
+            fetch('fetch_genres.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `higher_genre_id=${encodeURIComponent(higherGenreId)}`
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // 既存の子ジャンルセレクトを削除
+                    const selects = Array.from(genreArea.querySelectorAll('.genre-select'));
+                    const index = selects.indexOf(target);
+                    for (let i = index + 1; i < selects.length; i++) {
+                        selects[i].remove();
+                    }
+
+                    // 子ジャンルがある場合、新しいセレクトを横に追加
+                    if (data.length > 0) {
+                        const newSelect = document.createElement('select');
+                        newSelect.setAttribute('name', 'genre_id[]');
+                        newSelect.classList.add('form-control', 'genre-select');
+                        newSelect.innerHTML = '<option value="">選択してください</option>';
+                        data.forEach(genre => {
+                            const option = document.createElement('option');
+                            option.value = genre.genre_id;
+                            option.textContent = genre.genre_name;
+                            newSelect.appendChild(option);
+                        });
+                        genreArea.appendChild(newSelect); // 横に追加
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+    );
+});

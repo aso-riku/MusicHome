@@ -1,0 +1,59 @@
+body {
+    background-color: #f8f8f8;
+}
+
+.logo {
+    font-family: serif;
+    position: fixed;
+    top: 11px;
+    left: 40px;
+    color: black;
+    font-size: 2em;
+}
+
+.logo a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.register-user {
+    margin-top: 100px;
+    margin-bottom: 150px;
+}
+
+.title-label {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+span {
+    font-size: 0.8em;
+}
+
+.form-control {
+    width: 100%;
+}
+
+.error-message {
+    display: inline-block;
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.875em;
+    margin-top: 5px;
+}
+
+.error-message::before {
+    content: "⚠ ";
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.back-btn,
+.register-btn {
+    width: 15%;
+    border-radius: 15px;
+    margin: 0x 50px;
+}

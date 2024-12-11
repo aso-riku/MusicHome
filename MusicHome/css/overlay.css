@@ -8,24 +8,47 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 9999;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 /* メッセージのスタイル */
 #overlay-text {
-    background: #fff;
-    padding: 20px 30px;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    color: #333;
+    background: white;
+    padding: 25px 35px;
+    border-radius: 12px;
+    font-size: 1.4rem;
+    font-family: 'Arial', sans-serif;
+    color: #000000;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* 非表示時のスタイル */
+/* オーバーレイが非表示時のスタイル */
 .hidden {
     opacity: 0;
     visibility: hidden;
+}
+
+/* 表示時のアニメーション */
+.overlay:not(.hidden) #overlay-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 下からフェードインするアニメーション */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

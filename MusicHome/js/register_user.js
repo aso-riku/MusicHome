@@ -35,7 +35,7 @@ new Vue({
         },
         validateUserName() {
             if (this.user_name != '') {
-                this.errors.user_name = this.user_name.match(/^[a-zA-Z0-9]{6,}$/) ? '' : 'ユーザー名は6文字以上の英数字を入力してください。';
+                this.errors.user_name = this.user_name.match(/^[a-zA-Z0-9]{4,}$/) ? '' : 'ユーザー名は4文字以上の英数字を入力してください。';
             }
         },
         validatePassword() {
@@ -53,12 +53,6 @@ new Vue({
                 this.errors.post_number = this.post_number.match(/^\d{7}$/) ? '' : '郵便番号は7桁の数字を入力してください。';
             }
         },
-        handleSubmit() {
-            showOverlayMessage('登録が完了しました');
-        },
-        goBack() {
-            window.location.href = 'login.php';
-        }
     }
 });
 

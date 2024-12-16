@@ -18,7 +18,7 @@ require_once 'common.php';
     <link rel="stylesheet" href="../css/overlay.css">
 </head>
 
-<body>
+<body class="manager">
     <?php
     require_once 'common.php';
     $pdo = connect_db();
@@ -111,11 +111,8 @@ require_once 'common.php';
                         <div class="col-2">
                             <p class="headline">商品画像</p>
                         </div>
-                        <div class="col-1">
-
-                        </div>
-                        <div class="col-9">
-                        </div>
+                        <div class="col-1"></div>
+                        <div class="col-9"></div>
                     </div>
 
                     <div class="row main-img-area">
@@ -126,7 +123,7 @@ require_once 'common.php';
                             <p class="require">必須</p>
                         </div>
                         <div class="col-9">
-                            <input type="input" name="main_image" class="text-box">
+                            <input type="text" name="main_image" class="text-box" placeholder="画像URLを入力してください">
                         </div>
                     </div>
 
@@ -134,16 +131,15 @@ require_once 'common.php';
                         <div class="col-2">
                             <p class="headline">サブ画像</p>
                         </div>
-                        <div class="col-1">
-
-                        </div>
+                        <div class="col-1"></div>
                         <div class="col-9">
-                            <input type="input" name="sub_image[]" class="text-box">
+                            <input type="text" name="sub_image[]" class="text-box" placeholder="画像URLを入力してください">
                         </div>
                     </div>
                 </div>
 
                 <button type="button" class="btn btn-outline-dark add">サブ画像追加</button>
+                <div class="image-preview-area"></div> <!-- 画像を表示するエリア -->
 
                 <div class="row inventory-area">
                     <div class="col-2">

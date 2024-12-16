@@ -167,3 +167,46 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     );
 });
+
+// 入力欄でイベントリスナーを追加
+document.addEventListener('input', function (e) {
+    // 入力欄が .text-box クラスの場合のみ処理
+    if (e.target.classList.contains('text-box')) {
+        updateImagePreview();
+    }
+});
+
+document.addEventListener('DOMContentLoaded', updateImagePreview);
+
+// 画像プレビューを更新する関数
+function updateImagePreview() {
+    const mainImageInput = document.querySelector('input[name="main_image"]');
+    let allInputs = Array.from(document.querySelectorAll('input[name="sub_image[]"]')); // NodeList を配列に変換
+    const previewContainer = document.querySelector('.image-preview-area');
+
+    // プレビューコンテナをクリア
+    previewContainer.innerHTML = '';
+
+    // main_image を allInputs の最初に追加
+    if (mainImageInput && mainImageInput.value.trim()) {
+        const mainImage = document.createElement('input');
+        mainImage.value = mainImageInput.value.trim();
+        allInputs.unshift(mainImage); // 配列の先頭に追加
+    }
+
+    // 各入力欄からURLを取得して画像を表示
+    allInputs.forEach(input => {
+        const url = input.value.trim();
+        if (url) {
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = 'プレビュー画像';
+            img.style.width = '100px'; // 適宜サイズ調整
+            img.style.marginRight = '10px';
+            img.onerror = () => {
+                img.style.display = 'none'; // 無効なURLの場合非表示にする
+            };
+            previewContainer.appendChild(img);
+        }
+    });
+}

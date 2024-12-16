@@ -21,7 +21,7 @@ $pdo = connect_db();
     <title>Document</title>
 </head>
 
-<body>
+<body class="manager">
     <?php
     view_header_manager();
 

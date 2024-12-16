@@ -3,46 +3,21 @@ session_start();
 
 require_once 'common.php';
 
-// 入力されたメールアドレス
-$mail_address1 = sanitize($_POST['mail_address1'] ?? '');
-
-// メールアドレスのフォーマットを検証
-
-if (!filter_var($mail_address1, FILTER_VALIDATE_EMAIL)) {
-    // registration.php にリダイレクト
-    $_SESSION['error_message'] = 'メールアドレスが有効ではありません。';
-    header("Location:register_user.php");
+if ($_POST['action'] ?? '' == 'back') {
+    header('Location: login.php');
     exit();
 }
 
+// 入力されたメールアドレス
+$mail_address1 = sanitize($_POST['mail_address1'] ?? '');
 
 // 入力されたユーザー名
 
 $user_name = sanitize($_POST['user_name'] ?? '');
-// ユーザー名のフォーマットを検証
-if (!preg_match('/^(?=.*[a-zA-Z])[a-zA-Z0-9]{6,}$/', $user_name)) {
-    // registration.php にリダイレクト
-    $_SESSION['error_message'] = 'ユーザー名が有効ではありません。';
-    header("Location:register_user.php");
-    exit();
-}
 
 // 入力されたパスワード
 $password1 = sanitize($_POST['password1']);
 $password2 = sanitize($_POST['password2']);
-
-if ($password1 == $password2) {
-    if (!preg_match('/^[a-zA-Z0-9]{6,}$/', $password1)) {
-        // registration.php にリダイレクト
-        $_SESSION['error_message'] = 'パスワードが有効ではありません。';
-        header("Location:register_user.php");
-        exit();
-    }
-} else {
-    $_SESSION['error_message'] = 'パスワードが異なります';
-    header("Location:register_user.php");
-    exit();
-}
 
 // 入力された氏名
 $sei = sanitize($_POST['sei']);
@@ -59,12 +34,6 @@ $house_number = sanitize($_POST['house_number']);
 $house_name = sanitize($_POST['hosue_name'] ?? '');
 $address = $prefecture . $city . $house_number . $house_name;
 
-// 郵便番号のフォーマットを検証
-if (!preg_match('/^\d{7}$/', $post_number)) {
-    // registration.php にリダイレクト
-    $_SESSION['error_message'] = '郵便番号が有効ではありません。';
-    header("Location:register_user.php");
-}
 
 // データベース接続
 $pdo = connect_db();
@@ -99,6 +68,13 @@ if ($stmt->fetchColumn() == 0) {
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/Home.css">
     <link rel="stylesheet" href="../css/login_style.css">
+    <style>
+        .regi_result {
+            width: 20%;
+            margin: 200px auto;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>

@@ -175,6 +175,7 @@ li {
   display: none;
   /* 非表示がデフォルト */
   background-color: #ffffff;
+  border: 1px solid rgb(177, 177, 177);
   border-radius: 15px;
   padding: 10px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -217,6 +218,7 @@ li {
   display: none;
   /* 非表示がデフォルト */
   background-color: #f8f9fa;
+  border: 1px solid rgb(177, 177, 177);
   border-radius: 15px;
   padding: 10px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -283,7 +285,7 @@ nav.link {
   position: absolute;
   /* 親要素に基づいて位置を設定 */
   width: auto;
-  top: 50px;
+  top: 43px;
   /* アイコンの下に配置 */
   left: -100px;
   background-color: rgba(17, 17, 17, 0.8);
@@ -340,6 +342,10 @@ nav.link {
   color: rgb(179, 186, 255);
 }
 
+.overlay-menu p {
+  margin-bottom: 10px;
+}
+
 .gnav_wrap a:hover {
   text-decoration: none;
   color: black;
@@ -354,3 +360,8 @@ nav.link {
 input[type="number"] {
   border-radius: 5px;
 }
+
+.site-menu img:hover {
+  transform: translateY(-5px) scale(1.05); /* 上方向に少し持ち上がり、拡大 */
+}
+

@@ -28,9 +28,6 @@ $pdo = connect_db();
     $stmt = $pdo->prepare('SELECT * FROM user WHERE user_id = ?');
     $stmt->execute([$_SESSION['user']['user_id']]);
     $user_data = $stmt->fetch();
-    $stmt = $pdo->prepare('SELECT * FROM payment_method WHERE user_id = ?');
-    $stmt->execute([$_SESSION['user']['user_id']]);
-    $pay = $stmt;
     ?>
 
     <div id="overlay-message" class="overlay hidden">
@@ -45,11 +42,10 @@ $pdo = connect_db();
                     <p class="address"><?= $user_data['post_code'] ?>　<?= $user_data['address'] ?></p>
                     <p class="headline">お支払方法</p>
                     <select class="pay">
-                        <?php
-                        while ($row = $pay->fetch()) {
-                            echo '<option>', $row['payment_method'], '</option>';
-                        }
-                        ?>
+                        <option>クレジットカード</option>
+                        <option>paypay</option>
+                        <option>コンビニ支払い</option>
+                        <option>キャリア決済</option>
                     </select>
                 </div>
                 <div class="product-area card">

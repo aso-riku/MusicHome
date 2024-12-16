@@ -41,13 +41,16 @@ function view_header()
                             <div class="menu-container">
                                 <img src="../image/icon.png" height="45"> 
                                 <div class="overlay-menu">
-                                    <ul>
-                                        <li><a href="profile.php" class="profile">アカウント情報</a></li>';
+                                    <ul>';
 
                                         if (isset($_SESSION['user'])) {
-                                            echo '<li><a href="login.php?action=logout" class="text-logout">ログアウト</a></li>';
+                                            echo '<li><p>', $_SESSION['user']['user_name'], '</p></li>
+                                                  <li><a href="profile.php" class="profile">アカウント情報</a></li>
+                                                  <li><a href="buy_history" class="profile">購入履歴</a></li>
+                                                  <li><a href="login.php?action=logout" class="text-logout">ログアウト</a></li>';
                                         } else {
-                                            echo '<li><a href="login.php?ログイン" class="text-login">ログイン</a></li>';
+                                            echo '<li>ログインしていません</li>
+                                                  <li><a href="login.php?ログイン" class="text-login">ログイン</a></li>';
                                         }
 
     echo '                          </ul>
@@ -159,18 +162,17 @@ function view_header_manager()
                             <a href="register_product.php">
                                 <img src="../image/register.jpg" height="55">
                             </a>
-                            <div class="menu-container">
-                                <a href="login.php"> 
-                                    <img src="../image/icon.png" height="45"> 
-                                </a>
+                            <div class="menu-container"> 
+                                <img src="../image/icon.png" height="45"> 
                                 <div class="overlay-menu">
-                                    <ul>
-                                        <li><a href="profile.php" class="profile">アカウント情報</a></li>';
+                                    <ul>';
 
                                         if (isset($_SESSION['manager'])) {
-                                            echo '<li><a href="login.php?action=logout" class="text-logout">ログアウト</a></li>';
+                                            echo '<li><p>', $_SESSION['manager']['manager_name'], '</p></li>
+                                                  <li><a href="login.php?action=logout" class="text-logout">ログアウト</a></li>';
                                         } else {
-                                            echo '<li><a href="login.php?ログイン" class="text-login">ログイン</a></li>';
+                                            echo '<li>ログインしていません</li>
+                                                  <li><a href="login.php?ログイン" class="text-login">ログイン</a></li>';
                                         }
 
     echo '                          </ul>

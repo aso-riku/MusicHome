@@ -23,31 +23,31 @@ session_start();
     view_header();
     ?>
 
-</body>
+    <!-- スライド -->
     <!-- スライド -->
     <div class="slideshow-container">
-    <div class="slide active">
-        <img src="../image/blueno.jpg" alt="Slide 1">
-    </div>
-    <div class="slide">
-        <img src="../image/higtway.jpg" alt="Slide 2">
-    </div>
-    <div class="slide">
-        <img src="../image/blueno.jpg" alt="Slide 3">
-    </div>
+        <div class="slide active">
+            <img src="../image/blueno.jpg" alt="Slide 1">
+        </div>
+        <div class="slide">
+            <img src="../image/higtway.jpg" alt="Slide 2">
+        </div>
+        <div class="slide">
+            <img src="../image/blueno.jpg" alt="Slide 3">
+        </div>
 
-    <div class="controls">
-        <button id="prev">&#10094;</button>
-        <button id="next">&#10095;</button>
-    </div>
+        <div class="controls">
+            <button id="prev">&#10094;</button>
+            <button id="next">&#10095;</button>
+        </div>
 
-    <div class="dots">
-        <span data-index="0" class="active"></span>
-        <span data-index="1"></span>
-        <span data-index="2"></span>
+        <div class="dots">
+            <span data-index="0" class="active"></span>
+            <span data-index="1"></span>
+            <span data-index="2"></span>
+        </div>
     </div>
-</div>
-
+</body>
 <!-- ランキング -->
 <main>
     <form action="details_user.php" method="get" class="ranking-area">
@@ -60,34 +60,29 @@ session_start();
         <!-- ベースランキング -->
         <p class="genre-title"><span>ベースランキング</span></p>
         <?php
-        get_ranking('100');
+        get_ranking('200');
         ?>
 
         <!-- ドラムランキング -->
         <p class="genre-title"><span>ドラムランキング</span></p>
         <?php
-        get_ranking('100');
+        get_ranking('300');
         ?>
 
         <!-- ピアノランキング -->
         <p class="genre-title"><span>ピアノランキング</span></p>
         <?php
-        get_ranking('100');
-        ?>
-
-        <!-- 和楽器ランキング -->
-        <p class="genre-title"><span>和楽器ランキング</span></p>
-        <?php
-        get_ranking('100');
+        get_ranking('400');
         ?>
 
         <!-- 周辺機器ランキング -->
         <p class="genre-title"><span>周辺機器ランキング</span></p>
         <?php
-        get_ranking('100');
+        get_ranking('500');
         ?>
     </form>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0xP7q3y5xwQ5sqjT9r5r5rkXg2qXYtEws0+zI+uyfaO6H5f2" crossorigin="anonymous"></script>
 <script src="../js/slideshow.js"></script>
+
 </html>

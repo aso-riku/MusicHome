@@ -1,0 +1,93 @@
+.buy_history {
+    margin: 150px auto;
+    width: 65%;
+    max-width: 1200px; /* 最大幅を設定して、画面が広い場合でも余白が整うように */
+}
+
+.card {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px; /* 丸みを帯びたカード */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 優れたシャドウで立体感 */
+    margin-bottom: 20px;
+    padding: 20px 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-area {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.product-area .image-area {
+    width: 150px;
+    flex-shrink: 0; /* 画像が縮小しないように */
+    margin-right: 20px;
+}
+
+.product-area .image-area .img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* 画像の角を丸める */
+    object-fit: cover; /* 画像を切り抜きで表示 */
+}
+
+.product-area .detail-area {
+    flex: 1;
+}
+
+.name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.volume {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.price-area {
+    text-align: right;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #007BFF; /* 価格は目立つように青色 */
+}
+
+.price {
+    color: #d9534f; /* 価格の色を目立たせる */
+    font-size: 1.2em;
+}
+
+hr {
+    color: rgb(116, 116, 116);
+    margin: 15px 0;
+}
+
+.headline {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.image-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .product-area:last-child {
+    margin-bottom: 0;
+}
+
+.total {
+    font-size: 1.5em;
+    text-align: right;
+}
+
+.total-price {
+    color: rgb(255, 45, 45);
+}

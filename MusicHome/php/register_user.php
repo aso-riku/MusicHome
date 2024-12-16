@@ -21,27 +21,27 @@
         <main class="container mt-5 register-user">
             <div class="card mx-auto p-4 shadow-sm" style="max-width: 900px;">
                 <h1 class="text-center mb-4">Music Home 会員登録</h1>
-                <form @submit.prevent="handleSubmit">
+                <form action="register_user_result.php" method="post">
                     <!-- メールアドレス -->
                     <div class="mb-4">
                         <label for="mail_address1" class="form-label title-label">メールアドレス <span class="text-danger">必須</span></label>
-                        <input type="email" v-model="mail_address1" @input="validateEmail" class="form-control" id="mail_address1" placeholder="例: example@s.asojuku.ac.jp" required>
+                        <input type="email" name="mail_address1" v-model="mail_address1" @input="validateEmail" class="form-control" id="mail_address1" placeholder="例: example@s.asojuku.ac.jp" required>
                         <div class="error-message" v-if="errors.mail_address1">{{ errors.mail_address1 }}</div>
                     </div>
 
                     <!-- ユーザー名 -->
                     <div class="mb-4">
                         <label for="user_name" class="form-label title-label">ユーザー名 <span class="text-danger">必須</span></label>
-                        <input type="text" v-model="user_name" @input="validateUserName" class="form-control" id="user_name" placeholder="例: MusicHome1234">
+                        <input type="text" name="user_name" v-model="user_name" @input="validateUserName" class="form-control" id="user_name" placeholder="例: MusicHome1234">
                         <div class="error-message" v-if="errors.user_name">{{ errors.user_name }}</div>
                     </div>
 
                     <!-- パスワード -->
                     <div class="mb-4">
                         <label for="password" class="form-label title-label">パスワード <span class="text-danger">必須</span></label>
-                        <input type="password" v-model="password1" @input="validatePassword" class="form-control" id="password" placeholder="6文字以上 半角英数字" required>
+                        <input type="password" name="password1" v-model="password1" @input="validatePassword" class="form-control" id="password" placeholder="6文字以上 半角英数字" required>
                         <div class="error-message" v-if="errors.password1">{{ errors.password1 }}</div>
-                        <input type="password" v-model="password2" @input="validatePasswordMatch" class="form-control mt-2" placeholder="確認のためもう一度入力してください" required>
+                        <input type="password" name="password2"  v-model="password2" @input="validatePasswordMatch" class="form-control mt-2" placeholder="確認のためもう一度入力してください" required>
                         <div class="error-message" v-if="errors.password2">{{ errors.password2 }}</div>
                     </div>
 
@@ -49,8 +49,8 @@
                     <div class="mb-4">
                         <label class="form-label title-label">氏名 <span class="text-danger">必須</span></label>
                         <div class="d-flex gap-3">
-                            <input type="text" v-model="sei" class="form-control" placeholder="例: 山田" required>
-                            <input type="text" v-model="mei" class="form-control" placeholder="例: 太郎" required>
+                            <input type="text" name="sei" v-model="sei" class="form-control" placeholder="例: 山田" required>
+                            <input type="text" name="mei" v-model="mei" class="form-control" placeholder="例: 太郎" required>
                         </div>
                     </div>
 
@@ -58,8 +58,8 @@
                     <div class="mb-4">
                         <label class="form-label title-label">氏名（フリガナ） <span class="text-danger">必須</span></label>
                         <div class="d-flex gap-3">
-                            <input type="text" v-model="sei_huri" class="form-control" placeholder="例: ヤマダ" required>
-                            <input type="text" v-model="mei_huri" class="form-control" placeholder="例: タロウ" required>
+                            <input type="text" name="sei_huri" v-model="sei_huri" class="form-control" placeholder="例: ヤマダ" required>
+                            <input type="text" name="mei_huri" v-model="mei_huri" class="form-control" placeholder="例: タロウ" required>
                         </div>
                     </div>
 
@@ -69,12 +69,12 @@
                         <div class="row g-2">
                             <!-- 郵便番号 -->
                             <div class="col-md-6">
-                                <input type="text" v-model="post_number" @input="validatePostNumber" class="form-control" placeholder="郵便番号 (例: 1234567)" required>
+                                <input type="text" name="post_number" v-model="post_number" @input="validatePostNumber" class="form-control" placeholder="郵便番号 (例: 1234567)" required>
                                 <div class="error-message" v-if="errors.post_number">{{ errors.post_number }}</div>
                             </div>
                             <!-- 都道府県 -->
                             <div class="col-md-6">
-                                <select v-model="prefecture" class="form-select" required>
+                                <select name="prefecture" v-model="prefecture" class="form-select" required>
                                     <option value="" selected>選択してください</option>
                                     <option value="" selected>選択してください</option>
                                     <option value="北海道">北海道</option>
@@ -130,16 +130,16 @@
                         </div>
                         <!-- 市区町村・番地・建物名 -->
                         <div class="mt-3">
-                            <input type="text" v-model="city" class="form-control mb-2" placeholder="市区町村 (例: 新宿区)" required>
-                            <input type="text" v-model="house_number" class="form-control mb-2" placeholder="番地 (例: 1丁目1番地)" required>
-                            <input type="text" v-model="house_name" class="form-control" placeholder="建物名・部屋番号 (任意)">
+                            <input type="text" name="city" v-model="city" class="form-control mb-2" placeholder="市区町村 (例: 新宿区)" required>
+                            <input type="text" name="house_number" v-model="house_number" class="form-control mb-2" placeholder="番地 (例: 1丁目1番地)" required>
+                            <input type="text" name="house_name" v-model="house_name" class="form-control" placeholder="建物名・部屋番号 (任意)">
                         </div>
                     </div>
 
                     <!-- ボタン -->
                     <div class="d-flex justify-content-evenly">
-                        <button type="button" class="btn btn-outline-secondary back-btn" @click="goBack">戻る</button>
-                        <button type="submit" :disabled="hasErrors" class="btn btn-primary register-btn">登録</button>
+                        <button type="submit" name="action" value="back" class="btn btn-outline-secondary back-btn">戻る</button>
+                        <button type="submit" :disabled="hasErrors" class="btn btn-primary register-btn" >登録</button>
                     </div>
                 </form>
             </div>

@@ -19,7 +19,7 @@ $pdo = connect_db();
     <link rel="stylesheet" href="../css/overlay.css">
 </head>
 
-<body>
+<body class="manager">
     <?php
     view_header_manager();
 
@@ -125,6 +125,8 @@ $pdo = connect_db();
                 $row = $stmt->fetch();
                 ?>
 
+                <script>updateImagePreview();</script>
+                
                 <div>
                     <div class="row img-area">
                         <div class="col-2">
@@ -181,6 +183,7 @@ $pdo = connect_db();
                 </div>
 
                 <button type="button" class="btn btn-outline-dark add">サブ画像追加</button>
+                <div class="image-preview-area"></div> <!-- 画像を表示するエリア -->
 
                 <div class="row inventory-area">
                     <div class="col-2">
